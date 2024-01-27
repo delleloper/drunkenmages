@@ -33,10 +33,13 @@ const LERP_MULTIPLIER = 0.01
 @export_category("Inputs")
 @export var move_left :String = "move_left"
 @export var move_right : String = "move_right"
+@export var move_up :String = "move_up"
+@export var move_down : String = "move_down"
 @export var jump : String = "jump"
 @export var throw : String = "throw"
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite
+@onready var thrower = $Thrower
 
 
 func _ready():
@@ -47,6 +50,7 @@ func _ready():
 	drunken_status = Drunken_Status.SOBER
 	altered_state = Altered_State.NONE
 	animation_player.play("Idle")
+	
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

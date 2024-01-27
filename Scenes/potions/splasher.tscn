@@ -8,3 +8,6 @@ script = ExtResource("2_8f74i")
 amount = 3
 speed = 9000.0
 spread = 1500.0
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.105882, 0.701961, 0.796078, 1)

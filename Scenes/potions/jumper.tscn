@@ -5,3 +5,9 @@
 
 [node name="jumper" instance=ExtResource("1_huf5t")]
 script = ExtResource("2_sc1ev")
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.964706, 0.552941, 0.6, 1)

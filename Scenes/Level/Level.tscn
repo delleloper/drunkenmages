@@ -1,14 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://erf0kt12ms83"]
+[gd_scene load_steps=4 format=3 uid="uid://erf0kt12ms83"]
 
+[ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_keilr"]
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_kyr7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwsk8"]
 size = Vector2(999, 20)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_keilr")
 
 [node name="Player" parent="." instance=ExtResource("1_kyr7t")]
-position = Vector2(266, 250)
+position = Vector2(65, 244)
+move_left = "move_left1"
+move_right = "move_right1"
+move_up = "move_up1"
+move_down = "move_down1"
+jump = "jump1"
+throw = "throw1"
+
+[node name="Player2" parent="." instance=ExtResource("1_kyr7t")]
+position = Vector2(341, 250)
+move_left = "move_left2"
+move_right = "move_right2"
+move_up = "move_up2"
+move_down = "move_down2"
+jump = "jump2"
+throw = "throw2"
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(58, 479)

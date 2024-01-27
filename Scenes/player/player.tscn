@@ -287,7 +287,7 @@ script = ExtResource("1_ffpro")
 speed = 150.0
 acceleration = 6
 friction = 8
-jump_velocity = 250.0
+jump_velocity = 300.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
