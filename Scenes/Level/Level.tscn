@@ -8,11 +8,11 @@ size = Vector2(999, 20)
 [node name="Level" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_45klc")]
+position = Vector2(220, 259)
 
 [node name="Platform" type="StaticBody2D" parent="."]
-position = Vector2(58, 479)
+position = Vector2(246, 324)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(271, -153)
 shape = SubResource("RectangleShape2D_iwsk8")
 debug_color = Color(0.956863, 0.0392157, 0.509804, 0.419608)

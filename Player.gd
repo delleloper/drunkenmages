@@ -17,7 +17,7 @@ var current_acceleration : int
 var current_friction : int
 @export var jump_velocity : float = 150.0
 var current_jump_velocity : float
-
+var direction
 
 const LERP_MULTIPLIER = 0.01
 
@@ -38,12 +38,17 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -current_jump_velocity
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	
+	if !Input.is_action_pressed("throw"):
+		direction = Input.get_axis("move_left", "move_right")
+	else:
+		direction = Vector2.ZERO
+	
 	if direction:
 		velocity.x = lerp(velocity.x, direction * current_speed, current_acceleration * LERP_MULTIPLIER)
 	else:
