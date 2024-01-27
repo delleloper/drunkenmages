@@ -9,7 +9,8 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_n6k7m"]
 interpolation_mode = 2
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.661157, 0.983471)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vxind"]
 radius = 3.0
@@ -25,6 +26,7 @@ gradient = SubResource("Gradient_n6k7m")
 script = ExtResource("2_cvca4")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Line2D"]
+collision_layer = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/CharacterBody2D"]
 shape = SubResource("CircleShape2D_vxind")
