@@ -18,7 +18,7 @@ var current_friction : int
 @export var jump_velocity : float = 150.0
 var current_jump_velocity : float
 var direction
-
+var throwing = false
 const LERP_MULTIPLIER = 0.01
 
 
@@ -34,6 +34,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	# Add the gravity.
+	throwing = Input.is_action_pressed("throw")
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -44,7 +45,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
-	if !Input.is_action_pressed("throw"):
+	if !throwing:
 		direction = Input.get_axis("move_left", "move_right")
 	else:
 		direction = Vector2.ZERO

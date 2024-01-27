@@ -2,7 +2,8 @@ extends Node2D
 
 var throwing = true
 var throwDirection = Vector2.ZERO
-const PROJECTILE = preload("res://projectile.tscn")
+#TODO change current in player script
+@export var currentPotion : PackedScene
 @export var throw_speed : int
 
 
@@ -20,7 +21,7 @@ func _input(event):
 		throwProjectile()
 
 func throwProjectile():
-	var throwable : RigidBody2D = PROJECTILE.instantiate()
+	var throwable : RigidBody2D = currentPotion.instantiate()
 	throwable.apply_central_impulse(throwDirection * throw_speed)
 	throwable.global_position = global_position
 	get_tree().current_scene.add_child(throwable)

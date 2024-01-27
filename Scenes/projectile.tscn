@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0yquoyt48r7"]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_8n5o6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxowr"]
+radius = 9.05539
+
+[node name="Projectile" type="RigidBody2D"]
+collision_layer = 4
+max_contacts_reported = 100
+contact_monitor = true
+script = ExtResource("1_8n5o6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dxowr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8btojr67y21p"]
+
+[ext_resource type="PackedScene" uid="uid://b0yquoyt48r7" path="res://Scenes/projectile.tscn" id="1_bq7yk"]
+[ext_resource type="Script" path="res://scripts/potions/splasher.gd" id="2_8f74i"]
+
+[node name="splasher" instance=ExtResource("1_bq7yk")]
+script = ExtResource("2_8f74i")
+amount = 3
+speed = 9000.0
+spread = 1500.0
