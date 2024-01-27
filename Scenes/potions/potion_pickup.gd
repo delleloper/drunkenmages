@@ -6,8 +6,12 @@ enum potionType {
 @export var potionClass : potionType
 #@export var potion : PackedScene
 @onready var sprite_2d = $Sprite2D
+@onready var animation_player = $AnimationPlayer
 
 func _ready():
+	var animrand = randf_range(0,animation_player.get_current_animation_length())
+
+	animation_player.seek(animrand)
 	if potionClass == null:
 		queue_free()
 	match potionClass:

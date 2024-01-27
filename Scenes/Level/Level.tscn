@@ -90,6 +90,39 @@ position = Vector2(319, 210)
 [node name="Platform5" parent="." instance=ExtResource("3_egqg0")]
 position = Vector2(164, 212)
 
+[node name="Platform6" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(234, 146)
+
+[node name="Platform7" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(121, 121)
+
+[node name="Platform8" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(336, 113)
+
+[node name="Platform9" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(236, 73)
+
+[node name="Platform10" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(128, 46)
+
+[node name="Platform11" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(335, 22)
+
+[node name="Platform12" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(335, 22)
+
+[node name="Platform13" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(238, -12)
+
+[node name="Platform14" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(119, -56)
+
+[node name="Platform15" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(339, -80)
+
+[node name="Platform16" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(226, -107)
+
 [node name="SolidPlatform" parent="." instance=ExtResource("4_pcemg")]
 position = Vector2(227, 256)
 
@@ -98,3 +131,12 @@ position = Vector2(240, 180)
 
 [node name="PotionPickup" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(175, 325)
+
+[node name="PotionPickup2" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(373, 264)
+
+[node name="PotionPickup3" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(306, 187)
+
+[node name="PotionPickup4" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(292, 324)
