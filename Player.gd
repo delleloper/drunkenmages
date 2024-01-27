@@ -72,7 +72,6 @@ func handle_inputs() -> void:
 		velocity.y = -current_jump_velocity
 		
 func handle_movement(delta) -> void:
-		# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if direction:

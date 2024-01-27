@@ -6,6 +6,12 @@ var direction
 @onready var sprite_2d = $Sprite2D
 var rotation_speed = 360
 @onready var particles = $GPUParticles2D
+@export var color : Color
+
+
+func _ready():
+	sprite_2d.modulate = color
+	particles.modulate = color
 
 func addToscene(object):
 	get_tree().current_scene.call_deferred("add_child",object)

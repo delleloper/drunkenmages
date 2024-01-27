@@ -24,7 +24,7 @@ emission_sphere_radius = 27.92
 gravity = Vector3(0, 0, 0)
 linear_accel_min = 1.0
 linear_accel_max = 14.36
-scale_min = 1.5
+scale_min = 0.8
 scale_max = 2.5
 scale_curve = SubResource("CurveTexture_n1f6y")
 anim_speed_min = 1.0
@@ -100,7 +100,6 @@ collision_mask = 2
 script = ExtResource("1_54vy5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.141176, 1, 1)
 position = Vector2(0, 1.775)
 texture = ExtResource("1_nvby3")
 hframes = 6
