@@ -16,7 +16,7 @@ var throw : String
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	throwing = Input.is_action_pressed(player.throw)
-	if throwing:
+	if throwing && currentPotion:
 		throwDirection = Input.get_vector(player.move_left, player.move_right, player.move_up, player.move_down)
 	#print(throwDirection)
 		line_2d.update_trajectory(throwDirection,throw_speed,_delta)
@@ -24,7 +24,6 @@ func _process(_delta):
 	
 func _input(_event):
 	if currentPotion == null:
-		print("NO POTION")
 		return
 	if Input.is_action_just_released(player.throw) && !throwDirection.is_equal_approx(Vector2.ZERO):
 		throwProjectile()
@@ -34,4 +33,5 @@ func throwProjectile():
 	throwable.apply_central_impulse(throwDirection * throw_speed)
 	throwable.global_position = global_position
 	get_tree().current_scene.add_child(throwable)
-	
+	currentPotion = null
+	line_2d.clear_points()

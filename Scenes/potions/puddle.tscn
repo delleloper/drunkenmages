@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://spamqw5vr6tu"]
+[gd_scene load_steps=9 format=3 uid="uid://spamqw5vr6tu"]
 
 [ext_resource type="Script" path="res://Scenes/potions/puddle.gd" id="1_66efm"]
 [ext_resource type="Texture2D" uid="uid://tmnee1hlalmn" path="res://Assets/puddle/OilSpawn.png" id="2_ivouk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lte3v"]
-size = Vector2(28, 3.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_r283i"]
+radius = 3.60772
 
 [sub_resource type="Animation" id="Animation_hsddg"]
 length = 0.001
@@ -19,6 +19,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Icon:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_qb687"]
@@ -36,11 +48,44 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_4xgni"]
+resource_name = "dissapear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pryum"]
 _data = {
 "RESET": SubResource("Animation_hsddg"),
+"dissapear": SubResource("Animation_4xgni"),
 "show": SubResource("Animation_qb687")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lte3v"]
+size = Vector2(28, 3.5)
 
 [node name="PuddleRigid" type="RigidBody2D"]
 collision_layer = 0
@@ -48,11 +93,10 @@ lock_rotation = true
 script = ExtResource("1_66efm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_lte3v")
+position = Vector2(0.5, -1.875)
+shape = SubResource("CircleShape2D_r283i")
 
 [node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0.466667, 1, 0.729412, 1)
 position = Vector2(1, -1)
 texture = ExtResource("2_ivouk")
 hframes = 6
@@ -66,10 +110,16 @@ autoplay = "show"
 
 [node name="Puddle" type="Area2D" parent="."]
 position = Vector2(0, -8)
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Puddle"]
 shape = SubResource("RectangleShape2D_lte3v")
 one_way_collision = true
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="area_entered" from="Puddle" to="." method="_on_puddle_area_entered"]
 [connection signal="body_entered" from="Puddle" to="." method="_on_puddle_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

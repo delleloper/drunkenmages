@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckxdmagp50i5r"]
+[gd_scene load_steps=18 format=3 uid="uid://ckxdmagp50i5r"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ffpro"]
 [ext_resource type="Texture2D" uid="uid://u153ckjtk84w" path="res://Assets/Player/IdleStatic.png" id="2_24bh4"]
 [ext_resource type="PackedScene" uid="uid://c2d1plg7s41l8" path="res://thrower.tscn" id="3_dpifc"]
 [ext_resource type="Texture2D" uid="uid://drwd28ew4q16l" path="res://Assets/Player/Walk.png" id="4_f17n5"]
-[ext_resource type="PackedScene" uid="uid://dax2x71gb6057" path="res://Scenes/potions/jumper.tscn" id="4_scvx7"]
 [ext_resource type="Texture2D" uid="uid://uoxw0jg2ta0c" path="res://Assets/Player/Jump.png" id="5_huhkd"]
 [ext_resource type="Texture2D" uid="uid://k7tvf6grfhd" path="res://Assets/Player/Fall.png" id="6_aovlt"]
 [ext_resource type="Texture2D" uid="uid://ctohjyot51y6a" path="res://Assets/Player/Roll.png" id="8_5ctbp"]
@@ -403,7 +402,6 @@ texture_filter = 1
 texture = ExtResource("2_24bh4")
 
 [node name="Thrower" parent="." instance=ExtResource("3_dpifc")]
-currentPotion = ExtResource("4_scvx7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4l4cs")

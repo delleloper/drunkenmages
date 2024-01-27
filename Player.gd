@@ -100,3 +100,5 @@ func puddleJump(multiplier):
 	velocity.y = clamp(velocity.y * -1 * multiplier, -500, 500)
 	velocity.x = velocity.x * -1 * multiplier
 
+func pickPotion(potion):
+	thrower.currentPotion = potion
