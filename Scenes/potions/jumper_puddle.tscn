@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bel6fpm47xd2k"]
+
+[ext_resource type="PackedScene" uid="uid://spamqw5vr6tu" path="res://Scenes/potions/puddle.tscn" id="1_g4cbr"]
+[ext_resource type="Script" path="res://Scenes/potions/jumper_puddle.gd" id="1_ysqna"]
+
+[node name="Puddle" instance=ExtResource("1_g4cbr")]
+script = ExtResource("1_ysqna")
+
+[node name="CollisionShape2D" parent="." index="1"]
+debug_color = Color(0.733333, 0.470588, 0, 0.419608)

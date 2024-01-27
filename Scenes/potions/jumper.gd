@@ -1,6 +1,6 @@
 extends Projectile
 
-const PUDDLE = preload("res://Scenes/potions/splasher_puddle.tscn")
+const PUDDLE = preload("res://Scenes/potions/jumper_puddle.tscn")
 
 func explode():
 	var puddle = PUDDLE.instantiate()

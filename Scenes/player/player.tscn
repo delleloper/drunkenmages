@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckxdmagp50i5r"]
+[gd_scene load_steps=11 format=3 uid="uid://ckxdmagp50i5r"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ffpro"]
 [ext_resource type="Texture2D" uid="uid://u153ckjtk84w" path="res://Assets/Player/IdleStatic.png" id="2_24bh4"]
-[ext_resource type="PackedScene" path="res://thrower.tscn" id="3_dpifc"]
+[ext_resource type="PackedScene" uid="uid://c2d1plg7s41l8" path="res://thrower.tscn" id="3_dpifc"]
 [ext_resource type="Texture2D" uid="uid://drwd28ew4q16l" path="res://Assets/Player/Walk.png" id="4_f17n5"]
+[ext_resource type="PackedScene" uid="uid://dax2x71gb6057" path="res://Scenes/potions/jumper.tscn" id="4_udtk4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4l4cs"]
 radius = 11.0
@@ -184,6 +185,7 @@ texture_filter = 1
 texture = ExtResource("2_24bh4")
 
 [node name="Thrower" parent="." instance=ExtResource("3_dpifc")]
+currentPotion = ExtResource("4_udtk4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4l4cs")

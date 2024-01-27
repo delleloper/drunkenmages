@@ -1,4 +1,4 @@
-extends "res://scripts/projectile.gd"
+extends Projectile
 
 const SPLASHER_DROP = preload("res://Scenes/potions/splasher_drop.tscn")
 

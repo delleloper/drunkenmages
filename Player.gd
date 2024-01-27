@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 enum Drunken_Status{
 	SOBER,
 	LIGHTLY_DRUNKEN,
@@ -74,3 +76,6 @@ func handle_movement() -> void:
 		sprite.flip_h = true
 	if velocity.x > 0:
 		sprite.flip_h = false
+
+func puddleJump():
+	velocity = velocity * -1

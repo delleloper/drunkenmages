@@ -12,6 +12,9 @@ func explode():
 	pass
 	#queue_free()
 
-func _on_body_entered(_body):
-	if !_body is Projectile:
+func _on_body_entered(body):
+	if body is Puddle:
+		queue_free()
+	if !body is Projectile:
 		explode()
+		return

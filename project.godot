@@ -68,6 +68,9 @@ jump={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="projectile"
+2d_physics/size/window_width_override=1920
+2d_physics/stretch/mode="canvas_items"
+2d_physics/size/window_height_override=1440
 
 [rendering]
 

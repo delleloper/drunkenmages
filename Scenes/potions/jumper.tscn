@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dax2x71gb6057"]
+
+[ext_resource type="PackedScene" uid="uid://b0yquoyt48r7" path="res://Scenes/projectile.tscn" id="1_huf5t"]
+[ext_resource type="Script" path="res://Scenes/potions/jumper.gd" id="2_sc1ev"]
+
+[node name="jumper" instance=ExtResource("1_huf5t")]
+script = ExtResource("2_sc1ev")

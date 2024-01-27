@@ -6,17 +6,14 @@ var throwDirection = Vector2.ZERO
 @export var currentPotion : PackedScene
 @export var throw_speed : int
 
-
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	throwing = Input.is_action_pressed("throw")
 	if throwing:
 		throwDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	#print(throwDirection)
 	
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_released("throw") && !throwDirection.is_equal_approx(Vector2.ZERO):
 		throwProjectile()
 
