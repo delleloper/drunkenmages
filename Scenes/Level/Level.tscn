@@ -1,10 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://erf0kt12ms83"]
+[gd_scene load_steps=9 format=3 uid="uid://erf0kt12ms83"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_keilr"]
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_kyr7t"]
+[ext_resource type="PackedScene" uid="uid://by33i7fusbxyy" path="res://Scenes/Level/Platforms/Platform_one_way.tscn" id="3_egqg0"]
+[ext_resource type="PackedScene" uid="uid://bs7sgj8ay07of" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
+[ext_resource type="Texture2D" uid="uid://ck61g83soe5y4" path="res://Assets/Platforms/Solid_platform.png" id="5_f0wwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwsk8"]
 size = Vector2(999, 20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3v623"]
+texture = ExtResource("5_f0wwk")
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/next_alternative_id = 3
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/1 = 1
+2:2/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/1/physics_layer_0/angular_velocity = 0.0
+2:2/2 = 2
+2:2/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/2/physics_layer_0/angular_velocity = 0.0
+3:2/next_alternative_id = 3
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/1 = 1
+3:2/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/1/physics_layer_0/angular_velocity = 0.0
+3:2/2 = 2
+3:2/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/2/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_4j0o2"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_3v623")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_keilr")
@@ -28,9 +64,31 @@ jump = "jump2"
 throw = "throw2"
 
 [node name="Platform" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(58, 479)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
 position = Vector2(271, -153)
 shape = SubResource("RectangleShape2D_iwsk8")
 debug_color = Color(0.956863, 0.0392157, 0.509804, 0.419608)
+
+[node name="Platform2" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(113, 269)
+
+[node name="Platform3" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(367, 269)
+
+[node name="Platform4" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(319, 186)
+
+[node name="Platform5" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(164, 188)
+
+[node name="SolidPlatform" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(227, 232)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(164, 188)
+tile_set = SubResource("TileSet_4j0o2")
+format = 2
+layer_0/tile_data = PackedInt32Array(589814, 0, 2, 589815, 65536, 2, 589816, 0, 2, 589817, 65536, 2, 589818, 0, 2, 589819, 65536, 2, 589820, 0, 2, 589821, 65536, 2, 589822, 0, 2, 589823, 65536, 2, 524288, 0, 2, 524289, 65536, 2, 524290, 0, 2, 524291, 65536, 2, 524292, 0, 2, 524293, 65536, 2, 524294, 0, 2, 524295, 65536, 2, 524296, 0, 2, 524297, 65536, 2, 524298, 0, 2, 524299, 65536, 2, 524300, 0, 2, 524301, 65536, 2, 524302, 0, 2, 524303, 65536, 2, 524304, 0, 2, 524305, 65536, 2, 524306, 0, 2, 524307, 65536, 2)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs7sgj8ay07of"]
+
+[ext_resource type="Texture2D" uid="uid://ck61g83soe5y4" path="res://Assets/Platforms/Solid_platform.png" id="1_4jqb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyha6"]
+size = Vector2(64, 16)
+
+[node name="SolidPlatform" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_pyha6")
+
+[node name="SolidPlatform" type="Sprite2D" parent="."]
+texture = ExtResource("1_4jqb3")

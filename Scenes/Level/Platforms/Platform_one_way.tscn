@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://by33i7fusbxyy"]
 
-[ext_resource type="Texture2D" uid="uid://cvx1hau6ceirm" path="res://Assets/Platforms/OneWay.png" id="1_0onft"]
+[ext_resource type="Texture2D" uid="uid://cvx1hau6ceirm" path="res://Assets/Platforms/OneWay_platform.png" id="1_0onft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffnif"]
 size = Vector2(64, 10)
