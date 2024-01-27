@@ -51,10 +51,7 @@ func _ready():
 	altered_state = Altered_State.NONE
 	animation_player.play("Idle")
 	
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 
 func _physics_process(delta):	
 	if altered_state == Altered_State.NONE:
@@ -87,6 +84,7 @@ func handle_movement(delta) -> void:
 func handle_animations() -> void:
 	match altered_state:
 		Altered_State.NONE:
+			thrower.enabled = true			
 			if velocity.y > 3 && !is_on_floor():
 				animation_player.play("Fall")
 			if velocity.x != 0 && is_on_floor():
@@ -97,6 +95,7 @@ func handle_animations() -> void:
 				animation_player.play("Idle")
 		Altered_State.ROLLING:
 			animation_player.play("Roll")
+			thrower.enabled = false
 		Altered_State.HIT:
 			animation_player.play("Hit")
 	
@@ -112,10 +111,5 @@ func puddleJump(multiplier):
 	velocity.x = velocity.x * multiplier * (-1 if is_on_floor() else 1)
 	altered_state = Altered_State.ROLLING
 	
-	
 func pickPotion(potion):
 	thrower.currentPotion = potion
-
-
-
-
