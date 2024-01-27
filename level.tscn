@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkturfxep73bk"]
+
+[ext_resource type="PackedScene" uid="uid://c2d1plg7s41l8" path="res://thrower.tscn" id="1_os7gm"]
+[ext_resource type="Script" path="res://hurtbox.gd" id="2_qka10"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxkac"]
+size = Vector2(75, 221)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4r7qf"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Thrower" parent="." instance=ExtResource("1_os7gm")]
+position = Vector2(382, 273)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(210, 181)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(27.5, 100.5)
+shape = SubResource("RectangleShape2D_yxkac")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_qka10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4r7qf")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
