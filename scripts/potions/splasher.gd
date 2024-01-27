@@ -16,5 +16,4 @@ func spawn_drop():
 	drop.global_position = global_position
 	addToscene(drop)
 	var dropVelocity = Vector2(randf_range(-spread, spread) * randf() , -1 * speed)
-	print(dropVelocity)
 	drop.apply_central_impulse(dropVelocity)

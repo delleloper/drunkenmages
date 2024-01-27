@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://tmnee1hlalmn" path="res://Assets/puddle/OilSpawn.png" id="2_ivouk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lte3v"]
-size = Vector2(28, 3.5)
+size = Vector2(28, 3.75)
 
 [sub_resource type="Animation" id="Animation_qb687"]
 resource_name = "show"

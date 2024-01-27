@@ -96,5 +96,7 @@ func handle_animations() -> void:
 	if velocity.x > 0:
 		sprite.flip_h = false
 
-func puddleJump():
-	velocity = velocity * -1
+func puddleJump(multiplier):
+	velocity.y = clamp(velocity.y * -1 * multiplier, -500, 500)
+	velocity.x = velocity.x * -1 * multiplier
+

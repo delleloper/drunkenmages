@@ -5,6 +5,8 @@
 
 [node name="Puddle" instance=ExtResource("1_g4cbr")]
 script = ExtResource("1_ysqna")
+multiplier = 2
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -2)
 debug_color = Color(0.733333, 0.470588, 0, 0.419608)
