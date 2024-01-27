@@ -8,7 +8,11 @@ enum Drunken_Status{
 	MIDLY_DRUNKEN,
 	HEAVILY_DRUNKEN
 	}
-
+enum Altered_State{
+	NONE,
+	ROLLING,
+	HIT
+}
 
 @export_category("Default Stats")
 @export var speed : float = 120.0
@@ -24,8 +28,13 @@ var direction
 var throwing = false
 const LERP_MULTIPLIER = 0.01
 @export_category("Status")
-@export var status : Drunken_Status
-
+@export var drunken_status : Drunken_Status
+@export var altered_state : Altered_State
+@export_category("Inputs")
+@export var move_left :String = "move_left"
+@export var move_right : String = "move_right"
+@export var jump : String = "jump"
+@export var throw : String = "throw"
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite
 
@@ -35,7 +44,8 @@ func _ready():
 	current_friction = friction
 	current_speed = speed
 	current_jump_velocity = jump_velocity
-	status = Drunken_Status.SOBER
+	drunken_status = Drunken_Status.SOBER
+	altered_state = Altered_State.NONE
 	animation_player.play("Idle")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -43,27 +53,30 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):	
-	if !Input.is_action_pressed("throw"):
-		direction = Input.get_axis("move_left", "move_right")
-	else:
-		direction = Vector2.ZERO
+	if altered_state == Altered_State.NONE:
+		handle_inputs()
 	handle_movement(delta)
 	handle_animations()
 	move_and_slide()
-
+	
+func handle_inputs() -> void:
+	if !Input.is_action_pressed(throw):
+		direction = Input.get_axis(move_left, move_right)
+	else:
+		direction = Vector2.ZERO
+	if Input.is_action_just_pressed(jump) and is_on_floor():
+		velocity.y = -current_jump_velocity
+		
 func handle_movement(delta) -> void:
 		# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if direction:
 		velocity.x = lerp(velocity.x, direction * current_speed, current_acceleration * LERP_MULTIPLIER)
-		#animation_player.play("Walk")
 	else:
 		velocity.x = lerp(velocity.x, 0.0, current_friction * LERP_MULTIPLIER)
 		if velocity.x < 3 && velocity.x > -3:
 			velocity.x = 0
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = -current_jump_velocity
 
 func handle_animations() -> void:
 	if velocity.y > 3 && !is_on_floor():
