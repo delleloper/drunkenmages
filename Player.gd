@@ -95,6 +95,8 @@ func handle_animations() -> void:
 				animation_player.play("Jump")
 			if velocity == Vector2.ZERO:
 				animation_player.play("Idle")
+			if Input.is_action_pressed(throw):
+				animation_player.play("Cast")
 		Altered_State.ROLLING:
 			animation_player.play("Roll")
 		Altered_State.HIT:
