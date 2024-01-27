@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://erf0kt12ms83"]
+[gd_scene load_steps=10 format=3 uid="uid://erf0kt12ms83"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_keilr"]
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_kyr7t"]
@@ -48,6 +48,9 @@ texture = ExtResource("5_f0wwk")
 physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_3v623")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upbgu"]
+size = Vector2(450, 23)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_keilr")
@@ -127,7 +130,19 @@ position = Vector2(226, -107)
 position = Vector2(227, 256)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(240, 180)
+position = Vector2(241, 180)
+limit_left = 0
+limit_right = 480
+limit_bottom = 362
+editor_draw_limits = true
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+position = Vector2(0, -169)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+shape = SubResource("RectangleShape2D_upbgu")
 
 [node name="PotionPickup" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(175, 325)
@@ -140,3 +155,5 @@ position = Vector2(306, 187)
 
 [node name="PotionPickup4" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(292, 324)
+
+[connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]

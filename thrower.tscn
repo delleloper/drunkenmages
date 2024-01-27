@@ -9,8 +9,8 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_n6k7m"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.661157, 0.983471)
-colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.275482, 0.661157, 0.983471)
+colors = PackedColorArray(1, 0.984314, 0.0431373, 1, 0.478138, 0.838953, 0.279477, 1, 1, 0, 0, 1, 1, 0, 0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vxind"]
 radius = 3.0

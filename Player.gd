@@ -41,6 +41,7 @@ const LERP_MULTIPLIER = 0.01
 @onready var sprite : Sprite2D = $Sprite
 @onready var thrower = $Thrower
 
+signal dead
 
 func _ready():
 	current_acceleration = acceleration
@@ -116,3 +117,7 @@ func puddleJump(multiplier):
 	
 func pickPotion(potion):
 	thrower.currentPotion = potion
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited():
+	dead.emit()
