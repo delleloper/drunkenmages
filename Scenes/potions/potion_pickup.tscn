@@ -100,7 +100,6 @@ collision_mask = 2
 script = ExtResource("1_54vy5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.141176, 1, 1)
 position = Vector2(0, 1.775)
 texture = ExtResource("1_nvby3")
 hframes = 6
