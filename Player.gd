@@ -17,9 +17,15 @@ var current_acceleration : int
 var current_friction : int
 @export var jump_velocity : float = 150.0
 var current_jump_velocity : float
+
 var direction
 var throwing = false
 const LERP_MULTIPLIER = 0.01
+@export_category("Status")
+@export var status : Drunken_Status
+
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var sprite : Sprite2D = $Sprite
 
 
 func _ready():
@@ -27,6 +33,8 @@ func _ready():
 	current_friction = friction
 	current_speed = speed
 	current_jump_velocity = jump_velocity
+	status = Drunken_Status.SOBER
+	animation_player.play("Idle")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -49,10 +57,20 @@ func _physics_process(delta):
 		direction = Input.get_axis("move_left", "move_right")
 	else:
 		direction = Vector2.ZERO
-	
-	if direction:
-		velocity.x = lerp(velocity.x, direction * current_speed, current_acceleration * LERP_MULTIPLIER)
-	else:
-		velocity.x = lerp(velocity.x, 0.0, current_friction * LERP_MULTIPLIER)
+	handle_movement()
 
 	move_and_slide()
+
+func handle_movement() -> void:
+	if direction:
+		velocity.x = lerp(velocity.x, direction * current_speed, current_acceleration * LERP_MULTIPLIER)
+		animation_player.play("Walk")
+	else:
+		velocity.x = lerp(velocity.x, 0.0, current_friction * LERP_MULTIPLIER)
+		if velocity.x < 3 && velocity.x > -3:
+			velocity.x = 0
+			animation_player.play("Idle")
+	if velocity.x < 0:
+		sprite.flip_h = true
+	if velocity.x > 0:
+		sprite.flip_h = false

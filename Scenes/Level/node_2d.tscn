@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn1s12uxbkeiv"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_0kci3"]
+[ext_resource type="Texture2D" uid="uid://u153ckjtk84w" path="res://Assets/Player/IdleStatic.png" id="2_qdjti"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4l4cs"]
+radius = 11.0
+height = 36.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwsk8"]
+size = Vector2(999, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(254, 274)
+script = ExtResource("1_0kci3")
+speed = 150.0
+acceleration = 6
+friction = 8
+jump_velocity = 250.0
+
+[node name="IdleStatic" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_qdjti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_4l4cs")
+debug_color = Color(0, 0.6, 0.701961, 0.2)
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(58, 479)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(271, -153)
+shape = SubResource("RectangleShape2D_iwsk8")
+debug_color = Color(0.956863, 0.0392157, 0.509804, 0.419608)
