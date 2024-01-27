@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckxdmagp50i5r"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_ffpro"]
+[ext_resource type="Texture2D" uid="uid://u153ckjtk84w" path="res://Assets/Player/IdleStatic.png" id="2_24bh4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4l4cs"]
+radius = 11.0
+height = 36.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(254, 274)
+script = ExtResource("1_ffpro")
+speed = 150.0
+acceleration = 6
+friction = 8
+jump_velocity = 250.0
+
+[node name="IdleStatic" type="Sprite2D" parent="."]
+texture = ExtResource("2_24bh4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4l4cs")
+debug_color = Color(0, 0.6, 0.701961, 0.2)

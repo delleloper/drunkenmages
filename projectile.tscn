@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://bwakxgv5ld7pt" path="res://icon.svg" id="1_wil7o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxowr"]
-radius = 34.2345
+radius = 23.0
 
 [node name="Projectile" type="RigidBody2D"]
 script = ExtResource("1_atyoe")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(0.952941, 0.454902, 0.282353, 1)
-scale = Vector2(0.585938, 0.585938)
+scale = Vector2(0.324219, 0.324219)
 texture = ExtResource("1_wil7o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
