@@ -42,36 +42,38 @@ func _ready():
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
-func _physics_process(delta):
-	# Add the gravity.
-	throwing = Input.is_action_pressed("throw")
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = -current_jump_velocity
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	
-	if !throwing:
+func _physics_process(delta):	
+	if !Input.is_action_pressed("throw"):
 		direction = Input.get_axis("move_left", "move_right")
 	else:
 		direction = Vector2.ZERO
-	handle_movement()
-
+	handle_movement(delta)
+	handle_animations()
 	move_and_slide()
 
-func handle_movement() -> void:
+func handle_movement(delta) -> void:
+		# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
 	if direction:
 		velocity.x = lerp(velocity.x, direction * current_speed, current_acceleration * LERP_MULTIPLIER)
-		animation_player.play("Walk")
+		#animation_player.play("Walk")
 	else:
 		velocity.x = lerp(velocity.x, 0.0, current_friction * LERP_MULTIPLIER)
 		if velocity.x < 3 && velocity.x > -3:
 			velocity.x = 0
-			animation_player.play("Idle")
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = -current_jump_velocity
+
+func handle_animations() -> void:
+	if velocity.y > 3 && !is_on_floor():
+		animation_player.play("Fall")
+	if velocity.x != 0 && is_on_floor():
+		animation_player.play("Walk")
+	if velocity.y < 0:
+		animation_player.play("Jump")
+	if velocity == Vector2.ZERO:
+		animation_player.play("Idle")
 	if velocity.x < 0:
 		sprite.flip_h = true
 	if velocity.x > 0:

@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://q2bah2mj5l20"]
+[gd_scene load_steps=4 format=3 uid="uid://cg00v1t1exakd"]
 
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_45klc"]
-[ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_lqrxc"]
+[ext_resource type="PackedScene" uid="uid://by33i7fusbxyy" path="res://Scenes/Level/Platforms/Platform_one_way.tscn" id="2_5mjfo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwsk8"]
 size = Vector2(999, 20)
@@ -11,6 +11,7 @@ script = ExtResource("1_lqrxc")
 
 [node name="Player" parent="." instance=ExtResource("1_45klc")]
 position = Vector2(220, 259)
+jump_velocity = 350.0
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(246, 324)
@@ -18,3 +19,12 @@ position = Vector2(246, 324)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
 shape = SubResource("RectangleShape2D_iwsk8")
 debug_color = Color(0.956863, 0.0392157, 0.509804, 0.419608)
+
+[node name="Platform2" parent="." instance=ExtResource("2_5mjfo")]
+position = Vector2(354, 259)
+
+[node name="Platform3" parent="." instance=ExtResource("2_5mjfo")]
+position = Vector2(250, 203)
+
+[node name="Platform4" parent="." instance=ExtResource("2_5mjfo")]
+position = Vector2(126, 251)
