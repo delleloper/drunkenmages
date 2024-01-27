@@ -81,24 +81,42 @@ func handle_movement(delta) -> void:
 		velocity.x = lerp(velocity.x, 0.0, current_friction * LERP_MULTIPLIER)
 		if velocity.x < 3 && velocity.x > -3:
 			velocity.x = 0
-
+	if abs(velocity.x) < 20 && abs(velocity.y) < 3 && altered_state == Altered_State.ROLLING:
+		altered_state = Altered_State.NONE
+		current_friction = friction
+		
 func handle_animations() -> void:
-	if velocity.y > 3 && !is_on_floor():
-		animation_player.play("Fall")
-	if velocity.x != 0 && is_on_floor():
-		animation_player.play("Walk")
-	if velocity.y < 0:
-		animation_player.play("Jump")
-	if velocity == Vector2.ZERO:
-		animation_player.play("Idle")
+	match altered_state:
+		Altered_State.NONE:
+			if velocity.y > 3 && !is_on_floor():
+				animation_player.play("Fall")
+			if velocity.x != 0 && is_on_floor():
+				animation_player.play("Walk")
+			if velocity.y < 0:
+				animation_player.play("Jump")
+			if velocity == Vector2.ZERO:
+				animation_player.play("Idle")
+		Altered_State.ROLLING:
+			animation_player.play("Roll")
+		Altered_State.HIT:
+			animation_player.play("Hit")
+	
 	if velocity.x < 0:
 		sprite.flip_h = true
 	if velocity.x > 0:
 		sprite.flip_h = false
 
 func puddleJump(multiplier):
+	direction = Vector2.ZERO
+	current_friction = current_friction * 0.3
 	velocity.y = clamp(velocity.y * -1 * multiplier, -500, 500)
 	velocity.x = velocity.x * -1 * multiplier
-
+	altered_state = Altered_State.ROLLING
+	
+	
 func pickPotion(potion):
 	thrower.currentPotion = potion
+
+
+
+
