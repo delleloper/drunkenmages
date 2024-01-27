@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://tmnee1hlalmn" path="res://Assets/puddle/OilSpawn.png" id="2_ivouk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lte3v"]
-size = Vector2(28, 3.75)
+size = Vector2(28, 3.5)
 
 [sub_resource type="Animation" id="Animation_qb687"]
 resource_name = "show"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:frame")
+tracks/0/path = NodePath("../Icon:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +26,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:frame")
+tracks/0/path = NodePath("../Icon:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,20 +50,21 @@ script = ExtResource("1_66efm")
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_lte3v")
 
-[node name="Puddle" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="Icon" type="Sprite2D" parent="Puddle"]
+[node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(0.466667, 1, 0.729412, 1)
-position = Vector2(1, 6)
+position = Vector2(1, -1)
 texture = ExtResource("2_ivouk")
 hframes = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Puddle"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Puddle")
 libraries = {
 "": SubResource("AnimationLibrary_pryum")
 }
 autoplay = "show"
+
+[node name="Puddle" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Puddle"]
 position = Vector2(0, 5)
