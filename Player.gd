@@ -106,11 +106,12 @@ func handle_animations() -> void:
 		sprite.flip_h = false
 
 func puddleJump(multiplier):
-	direction = Vector2.ZERO
-	current_friction = current_friction * 0.3
-	velocity.y = clamp(velocity.y * -1 * multiplier, -500, 500)
-	velocity.x = velocity.x * multiplier * (-1 if is_on_floor() else 1)
-	altered_state = Altered_State.ROLLING
+	if velocity.y >= 0:
+		direction = Vector2.ZERO
+		current_friction = current_friction * 0.3
+		velocity.y = clamp(velocity.y * -1 * multiplier, -500, 500)
+		velocity.x = velocity.x * multiplier * (-1 if is_on_floor() else 1)
+		altered_state = Altered_State.ROLLING
 	
 	
 func pickPotion(potion):
