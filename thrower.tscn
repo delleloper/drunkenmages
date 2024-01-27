@@ -1,7 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2d1plg7s41l8"]
+[gd_scene load_steps=6 format=3 uid="uid://c2d1plg7s41l8"]
 
 [ext_resource type="Script" path="res://scripts/Thrower.gd" id="1_0uo6v"]
+[ext_resource type="Script" path="res://Trajectory.gd" id="2_cvca4"]
+
+[sub_resource type="Curve" id="Curve_ctunx"]
+_data = [Vector2(0.00496278, 0.266825), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_n6k7m"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxind"]
+radius = 3.0
 
 [node name="Thrower" type="Node2D"]
 script = ExtResource("1_0uo6v")
 throw_speed = 500
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(57, 61, 149, 55, 296, 52)
+width_curve = SubResource("Curve_ctunx")
+gradient = SubResource("Gradient_n6k7m")
+script = ExtResource("2_cvca4")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Line2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/CharacterBody2D"]
+shape = SubResource("CircleShape2D_vxind")

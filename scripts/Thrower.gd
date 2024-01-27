@@ -11,6 +11,7 @@ var move_right : String
 var jump : String
 var throw : String
 @onready var player : Player = owner  
+@onready var line_2d = $Line2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -18,6 +19,8 @@ func _process(_delta):
 	if throwing:
 		throwDirection = Input.get_vector(player.move_left, player.move_right, player.move_up, player.move_down)
 	#print(throwDirection)
+		line_2d.update_trajectory(throwDirection,throw_speed,_delta)
+	line_2d.visible = throwing && !throwDirection.is_zero_approx()
 	
 func _input(_event):
 	if currentPotion == null:

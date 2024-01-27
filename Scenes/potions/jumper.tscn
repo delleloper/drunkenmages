@@ -10,4 +10,4 @@ script = ExtResource("2_sc1ev")
 visible = false
 
 [node name="Sprite2D" parent="." index="1"]
-modulate = Color(0.964706, 0.552941, 0.6, 1)
+modulate = Color(1, 0.219608, 0.47451, 1)
