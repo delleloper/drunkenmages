@@ -20,7 +20,6 @@ script = ExtResource("1_0uo6v")
 throw_speed = 500
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(57, 61, 149, 55, 296, 52)
 width_curve = SubResource("Curve_ctunx")
 gradient = SubResource("Gradient_n6k7m")
 script = ExtResource("2_cvca4")

@@ -9,5 +9,8 @@ script = ExtResource("2_sc1ev")
 [node name="CollisionShape2D" parent="." index="0"]
 visible = false
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="GPUParticles2D" parent="." index="1"]
+modulate = Color(1, 0.219608, 0.47451, 1)
+
+[node name="Sprite2D" parent="." index="2"]
 modulate = Color(1, 0.219608, 0.47451, 1)

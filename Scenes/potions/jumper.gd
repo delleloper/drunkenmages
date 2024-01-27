@@ -6,4 +6,5 @@ func explode():
 	var puddle = PUDDLE.instantiate()
 	puddle.global_position = global_position
 	addToscene(puddle)
+	super()
 	queue_free()
