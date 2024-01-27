@@ -1,23 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://spamqw5vr6tu"]
+[gd_scene load_steps=7 format=3 uid="uid://spamqw5vr6tu"]
 
 [ext_resource type="Script" path="res://Scenes/potions/puddle.gd" id="1_66efm"]
-[ext_resource type="Texture2D" uid="uid://bwakxgv5ld7pt" path="res://icon.svg" id="1_kwoow"]
+[ext_resource type="Texture2D" uid="uid://tmnee1hlalmn" path="res://Assets/puddle/OilSpawn.png" id="2_ivouk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lte3v"]
 size = Vector2(28, 3.5)
 
-[node name="Puddle" type="Area2D"]
-collision_mask = 2
-script = ExtResource("1_66efm")
+[sub_resource type="Animation" id="Animation_qb687"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
 
-[node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0.466667, 1, 0.729412, 1)
-position = Vector2(-5.96046e-07, 4.844)
-scale = Vector2(0.21875, 0.0288125)
-texture = ExtResource("1_kwoow")
+[sub_resource type="Animation" id="Animation_hsddg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pryum"]
+_data = {
+"RESET": SubResource("Animation_hsddg"),
+"show": SubResource("Animation_qb687")
+}
+
+[node name="PuddleRigid" type="RigidBody2D"]
+collision_layer = 0
+script = ExtResource("1_66efm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_lte3v")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Puddle" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="Icon" type="Sprite2D" parent="Puddle"]
+modulate = Color(0.466667, 1, 0.729412, 1)
+position = Vector2(1, 6)
+texture = ExtResource("2_ivouk")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Puddle"]
+libraries = {
+"": SubResource("AnimationLibrary_pryum")
+}
+autoplay = "show"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puddle"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_lte3v")
+
+[connection signal="body_entered" from="Puddle" to="." method="_on_puddle_body_entered"]

@@ -27,8 +27,8 @@ emission_sphere_radius = 27.92
 gravity = Vector3(0, 0, 0)
 linear_accel_min = 1.0
 linear_accel_max = 14.36
-scale_min = 2.0
-scale_max = 4.0
+scale_min = 1.5
+scale_max = 2.5
 scale_curve = SubResource("CurveTexture_n1f6y")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
@@ -69,7 +69,7 @@ _data = {
 "idle": SubResource("Animation_s7acm")
 }
 
-[node name="Projectile" type="RigidBody2D"]
+[node name="Potion" type="RigidBody2D"]
 collision_layer = 4
 mass = 0.55
 max_contacts_reported = 100
@@ -81,7 +81,7 @@ shape = SubResource("CircleShape2D_dxowr")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_vp4ch")
-amount = 12
+amount = 9
 process_material = SubResource("ParticleProcessMaterial_l0ffy")
 texture = ExtResource("3_r0xhs")
 

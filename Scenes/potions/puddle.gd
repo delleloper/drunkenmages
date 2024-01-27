@@ -1,10 +1,10 @@
-extends Area2D
+extends RigidBody2D
 
 class_name Puddle
 
 func playerEnter(_player):
 	pass
 
-func _on_body_entered(body):
+func _on_puddle_body_entered(body):
 	if body is Player:
 		playerEnter(body)

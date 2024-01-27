@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-class_name Projectile
+class_name Potion
 
 var direction
 @onready var sprite_2d = $Sprite2D
@@ -23,6 +23,6 @@ func explode():
 func _on_body_entered(body):
 	if body is Puddle:
 		queue_free()
-	if !body is Projectile:
+	if !body is Potion:
 		explode()
 		return

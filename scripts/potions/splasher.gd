@@ -1,4 +1,4 @@
-extends Projectile
+extends Potion
 
 const SPLASHER_DROP = preload("res://Scenes/potions/splasher_drop.tscn")
 

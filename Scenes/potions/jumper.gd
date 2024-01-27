@@ -1,4 +1,4 @@
-extends Projectile
+extends Potion
 
 const PUDDLE = preload("res://Scenes/potions/jumper_puddle.tscn")
 
