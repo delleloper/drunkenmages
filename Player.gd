@@ -85,7 +85,7 @@ func handle_movement(delta) -> void:
 		velocity.x = lerp(velocity.x, 0.0, current_friction * LERP_MULTIPLIER)
 		if velocity.x < 3 && velocity.x > -3:
 			velocity.x = 0
-	if abs(velocity.x) < 20 && abs(velocity.y) < 3 && altered_state == Altered_State.ROLLING:
+	if abs(velocity.x) < 20 && abs(velocity.y) < 3 && (altered_state == Altered_State.ROLLING || altered_state == Altered_State.SLIDING):
 		altered_state = Altered_State.NONE
 		current_friction = friction
 		
@@ -114,6 +114,9 @@ func handle_animations() -> void:
 			thrower.enabled = false
 		Altered_State.HIT:
 			animation_player.play("Hit")
+			hide_potion()
+		Altered_State.SLIDING:
+			animation_player.play("Slide")
 			hide_potion()
 	
 	if velocity.x < 0:
@@ -153,9 +156,9 @@ func puddleJump(multiplier):
 func puddleSlide(multiplier):
 	if velocity.y >= 0:
 		direction = Vector2.ZERO
-		current_friction = current_friction * 0.2
+		current_friction = current_friction * 0.55
 		velocity.x = velocity.x * multiplier
-		altered_state = Altered_State.ROLLING
+		altered_state = Altered_State.SLIDING
 		if velocity.is_zero_approx():
 			velocity.x = 500 * (-1 if position.x < 240 else 1)
 				
@@ -182,4 +185,4 @@ func _on_area_2d_2_body_entered_2(body):
 
 func player_bounce(dir):
 	velocity.x = 100 * dir
-	current_friction += 0.1
+	current_friction += 1
