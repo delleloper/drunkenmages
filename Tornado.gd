@@ -45,6 +45,7 @@ func _on_area_2d_body_entered(body):
 		body.enterTornado()
 		player_affected = body
 		is_player_affected = true
+		tornado_victim.modulate = body.sprite.modulate
 		tornado_victim.visible = true
 
 func _on_tornado_exit_timeout():

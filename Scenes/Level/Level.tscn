@@ -647,22 +647,23 @@ shape = SubResource("RectangleShape2D_upbgu")
 
 [node name="PotionPickup" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(115, 268)
-potionClass = 3
+potionClass = 4
 
 [node name="PotionPickup11" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(239, 189)
-potionClass = 1
+potionClass = 2
 
 [node name="PotionPickup5" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(176, 322)
-potionClass = 2
+potionClass = 1
 
 [node name="PotionPickup6" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(88, 205)
+potionClass = 3
 
 [node name="PotionPickup2" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(373, 264)
-potionClass = 2
+potionClass = 4
 
 [node name="PotionPickup7" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(121, -9)
@@ -764,9 +765,11 @@ position = Vector2(330, -22)
 
 [node name="PotionPickup3" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(400, 215)
+potionClass = 3
 
 [node name="PotionPickup4" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(292, 324)
+potionClass = 1
 
 [node name="Trophy" parent="." instance=ExtResource("10_3rhkn")]
 position = Vector2(240, -3102)
