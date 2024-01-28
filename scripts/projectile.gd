@@ -7,7 +7,7 @@ var direction
 var rotation_speed = 360
 @onready var particles = $GPUParticles2D
 @export var color : Color
-
+var exploded = false
 
 func _ready():
 	sprite_2d.modulate = color
@@ -30,5 +30,7 @@ func _on_body_entered(body):
 	if body is Puddle:
 		queue_free()
 	if !body is Potion:
-		explode()
+		if(!exploded):
+			exploded = true
+			explode()
 		return

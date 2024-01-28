@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://k6ai21ic71go"]
+
+[ext_resource type="PackedScene" uid="uid://b0yquoyt48r7" path="res://Scenes/projectile.tscn" id="1_cvkj0"]
+[ext_resource type="Script" path="res://Scenes/potions/firepotion.gd" id="2_jl25c"]
+
+[node name="Potion" instance=ExtResource("1_cvkj0")]
+script = ExtResource("2_jl25c")
+color = Color(1, 0, 0, 1)

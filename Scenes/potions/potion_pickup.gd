@@ -13,7 +13,7 @@ func _ready():
 
 	animation_player.seek(animrand)
 	if potionClass == null:
-		queue_free()
+		potionType.keys()[randi() % potionType.size()]
 	sprite_2d.modulate = get_color()
 
 func get_potion():
@@ -22,6 +22,10 @@ func get_potion():
 			return preload("res://Scenes/potions/jumper.tscn")
 		potionType.SPLASHER:
 			return preload("res://Scenes/potions/splasher.tscn")
+		potionType.BALL:
+			return preload("res://Scenes/potions/firepotion.tscn")
+		potionType.TORNADO:
+			return preload("res://Scenes/potions/tornadopotion.tscn")
 
 func get_color():
 	match potionClass:
@@ -29,6 +33,10 @@ func get_color():
 			return Color.YELLOW
 		potionType.SPLASHER:
 			return Color.NAVY_BLUE
+		potionType.BALL:
+			return Color.RED
+		potionType.TORNADO:
+			return Color.GREEN
 
 
 func _on_body_entered(body):
