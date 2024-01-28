@@ -445,13 +445,13 @@ _data = {
 "Walk": SubResource("Animation_5fuej")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_ffpro")
 speed = 150.0
 acceleration = 6
 friction = 8
-jump_velocity = 300.0
+jump_velocity = 350.0
 
 [node name="Potion_sprite" type="Sprite2D" parent="."]
 position = Vector2(-12, -15)
@@ -473,3 +473,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.2)
 libraries = {
 "": SubResource("AnimationLibrary_r16pk")
 }
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

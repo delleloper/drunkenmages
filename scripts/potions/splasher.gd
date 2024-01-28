@@ -15,5 +15,5 @@ func spawn_drop():
 	var drop = SPLASHER_DROP.instantiate() as RigidBody2D
 	drop.global_position = global_position
 	addToscene(drop)
-	var dropVelocity = Vector2(randf_range(-spread, spread) * randf() , -1 * speed)
-	drop.apply_central_impulse(dropVelocity)
+	#var dropVelocity = Vector2(randf_range(-spread, spread) * randf() , -1 * speed)
+	#drop.apply_central_impulse(dropVelocity)

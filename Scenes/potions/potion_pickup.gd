@@ -17,11 +17,15 @@ func _ready():
 	match potionClass:
 		potionType.JUMPER:
 			sprite_2d.modulate = Color.YELLOW
+		potionType.JUMPER:
+			sprite_2d.modulate = Color.NAVY_BLUE
 
 func get_potion():
 	match potionClass:
 		potionType.JUMPER:
 			return preload("res://Scenes/potions/jumper.tscn")
+		potionType.SPLASHER:
+			return preload("res://Scenes/potions/splasher.tscn")
 
 func get_color():
 	return Color.YELLOW
