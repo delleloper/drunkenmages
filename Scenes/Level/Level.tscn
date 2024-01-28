@@ -788,7 +788,6 @@ one_shot = true
 
 [node name="Trophy" type="Sprite2D" parent="."]
 position = Vector2(240, -3089)
-scale = Vector2(3, 3)
 texture = ExtResource("8_nwovt")
 
 [connection signal="body_entered" from="TileMap/Area2D" to="Player" method="_on_area_2d_body_entered"]

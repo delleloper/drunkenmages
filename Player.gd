@@ -44,6 +44,8 @@ const LERP_MULTIPLIER = 0.01
 @onready var sprite : Sprite2D = $Sprite
 @onready var thrower = $Thrower
 @onready var potion_sprite : Sprite2D = $Potion_sprite
+@onready var collision_shape_2d = $CollisionShape2D
+@onready var collider_timer = $collider_timer
 
 
 var currentPotion : PackedScene
@@ -87,8 +89,12 @@ func handle_inputs() -> void:
 	else:
 		direction = Vector2.ZERO
 	if Input.is_action_just_pressed(jump) and is_on_floor():
-		velocity.y = -current_jump_velocity
-		
+		if Input.is_action_pressed(move_down):
+			collision_shape_2d.disabled = true
+			collider_timer.start(.1)
+		else:
+			velocity.y = -current_jump_velocity
+			
 func handle_movement(delta) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -232,3 +238,5 @@ func _on_area_2d_body_entered_projectiles(body):
 func set_color(color : Color):
 	sprite.modulate = color
 
+func _on_collider_timer_timeout():
+	collision_shape_2d.disabled = false
