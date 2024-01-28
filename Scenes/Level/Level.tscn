@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://erf0kt12ms83"]
+[gd_scene load_steps=15 format=3 uid="uid://erf0kt12ms83"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_keilr"]
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_kyr7t"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ck61g83soe5y4" path="res://Assets/Platforms/Solid_platform.png" id="5_f0wwk"]
 [ext_resource type="PackedScene" uid="uid://0u6n7bg5bfgh" path="res://Scenes/potions/potion_pickup.tscn" id="6_8y87c"]
 [ext_resource type="Script" path="res://Scenes/Level/Camera2D.gd" id="6_msht2"]
+[ext_resource type="AudioStream" uid="uid://osey5ws1a62j" path="res://Assets/music/GGJ_-_Background_Main_Intro.wav" id="9_0mpfc"]
 [ext_resource type="Texture2D" uid="uid://cbf2lfsvo2eac" path="res://Assets/Trophy.png" id="9_f48us"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3v623"]
@@ -60,7 +61,6 @@ size = Vector2(450, 23)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_keilr")
-camera_speed = null
 player2Color = Color(0.901961, 1, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -786,6 +786,11 @@ throw = "throw2"
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0mpfc")
+autoplay = true
+bus = &"music"
 
 [node name="Trophy" type="Sprite2D" parent="."]
 position = Vector2(240, -3089)
