@@ -165,7 +165,7 @@ shape = SubResource("RectangleShape2D_lte3v")
 one_way_collision = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="area_entered" from="Puddle" to="." method="_on_puddle_area_entered"]

@@ -1,19 +1,10 @@
 extends Potion
 
-const SPLASHER_DROP = preload("res://Scenes/potions/splasher_drop.tscn")
-
-@export var amount : int = 3
-@export var speed : float = 5500
-@export var spread : float = 1500
+const PUDDLE = preload("res://Scenes/potions/splasher_puddle.tscn")
 
 func explode():
-	for each in amount:
-		spawn_drop()
+	var puddle = PUDDLE.instantiate()
+	puddle.global_position = global_position
+	get_tree().current_scene.call_deferred("add_child",puddle)
 	queue_free()
-
-func spawn_drop():
-	var drop = SPLASHER_DROP.instantiate() as RigidBody2D
-	drop.global_position = global_position
-	addToscene(drop)
-	#var dropVelocity = Vector2(randf_range(-spread, spread) * randf() , -1 * speed)
-	#drop.apply_central_impulse(dropVelocity)
+	

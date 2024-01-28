@@ -129,6 +129,7 @@ shape = SubResource("RectangleShape2D_upbgu")
 
 [node name="PotionPickup" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(176, 325)
+potionClass = 3
 
 [node name="PotionPickup2" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(373, 264)
