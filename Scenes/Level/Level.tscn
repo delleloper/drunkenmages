@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_kyr7t"]
 [ext_resource type="Texture2D" uid="uid://c8s6hl0rrjdgk" path="res://Assets/Platforms/Background.png" id="2_wuval"]
 [ext_resource type="PackedScene" uid="uid://by33i7fusbxyy" path="res://Scenes/Level/Platforms/Platform_one_way.tscn" id="3_egqg0"]
-[ext_resource type="PackedScene" uid="uid://bs7sgj8ay07of" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
+[ext_resource type="PackedScene" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
 [ext_resource type="Texture2D" uid="uid://ck61g83soe5y4" path="res://Assets/Platforms/Solid_platform.png" id="5_f0wwk"]
 [ext_resource type="PackedScene" uid="uid://0u6n7bg5bfgh" path="res://Scenes/potions/potion_pickup.tscn" id="6_8y87c"]
 [ext_resource type="Script" path="res://Scenes/Level/Camera2D.gd" id="6_msht2"]
@@ -669,6 +669,91 @@ position = Vector2(253, 19)
 
 [node name="PotionPickup9" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(242, -81)
+
+[node name="PotionPickup12" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(183, -194)
+
+[node name="PotionPickup13" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(250, -329)
+
+[node name="PotionPickup14" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(73, -416)
+
+[node name="PotionPickup15" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(237, -587)
+
+[node name="PotionPickup16" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(405, -702)
+
+[node name="PotionPickup17" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(84, -808)
+
+[node name="PotionPickup18" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(393, -908)
+
+[node name="PotionPickup19" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(96, -1225)
+
+[node name="PotionPickup20" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(437, -1357)
+
+[node name="PotionPickup39" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(241, -1040)
+potionClass = 2
+
+[node name="PotionPickup21" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(313, -1616)
+
+[node name="PotionPickup22" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(290, -1794)
+
+[node name="PotionPickup23" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(171, -1942)
+
+[node name="PotionPickup24" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(230, -2138)
+
+[node name="PotionPickup25" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(258, -2323)
+
+[node name="PotionPickup26" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(407, -2437)
+
+[node name="PotionPickup27" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(249, -2634)
+
+[node name="PotionPickup28" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(396, -2738)
+
+[node name="PotionPickup29" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(201, -2715)
+
+[node name="PotionPickup30" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(115, -2755)
+
+[node name="PotionPickup31" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(322, -2835)
+
+[node name="PotionPickup32" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(144, -2853)
+
+[node name="PotionPickup33" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(82, -2987)
+
+[node name="PotionPickup34" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(413, -2984)
+
+[node name="PotionPickup35" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(204, -2806)
+
+[node name="PotionPickup36" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(93, -2517)
+
+[node name="PotionPickup37" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(105, -2230)
+
+[node name="PotionPickup38" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(356, -2175)
 
 [node name="PotionPickup10" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(330, -22)

@@ -1,19 +1,18 @@
 extends Area2D
 
 enum potionType {
-	JUMPER, TORNADO, BALL, SPLASHER
+	NONE, JUMPER, TORNADO, BALL, SPLASHER
 }
-@export var potionClass : potionType
+@export var potionClass : potionType = potionType.NONE
 #@export var potion : PackedScene
 @onready var sprite_2d = $Sprite2D
 @onready var animation_player = $AnimationPlayer
 
 func _ready():
 	var animrand = randf_range(0,animation_player.get_current_animation_length())
-
 	animation_player.seek(animrand)
-	if potionClass == null:
-		potionType.keys()[randi() % potionType.size()]
+	if potionClass == potionType.NONE:
+		potionClass = randi_range(1,3) 
 	sprite_2d.modulate = get_color()
 
 func get_potion():
