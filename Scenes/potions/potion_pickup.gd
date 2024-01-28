@@ -12,7 +12,8 @@ func _ready():
 	var animrand = randf_range(0,animation_player.get_current_animation_length())
 	animation_player.seek(animrand)
 	if potionClass == potionType.NONE:
-		potionClass = randi_range(1,3) 
+		potionClass = randi_range(1,4) 
+	print()
 	sprite_2d.modulate = get_color()
 
 func get_potion():
