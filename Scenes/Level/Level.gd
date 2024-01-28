@@ -1,4 +1,5 @@
 extends Node2D
+@onready var reset_timer = $ResetTimer
 
 @onready var camera_2d = $Camera2D
 @export var camera_speed = 0
@@ -17,5 +18,9 @@ func _ready():
 		each.dead.connect(game_over)
 
 func game_over():
+	reset_timer.start(3)
+
+
+func _on_reset_timer_timeout():
 	get_tree().reload_current_scene()
 	

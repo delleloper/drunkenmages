@@ -694,6 +694,8 @@ acceleration = 6
 friction = 8
 jump_velocity = 350.0
 
+[node name="Thrower" parent="." instance=ExtResource("3_dpifc")]
+
 [node name="Potion_sprite" type="Sprite2D" parent="."]
 position = Vector2(-12, -15)
 texture = ExtResource("2_4qnii")
@@ -702,8 +704,6 @@ hframes = 6
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_24bh4")
-
-[node name="Thrower" parent="." instance=ExtResource("3_dpifc")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4l4cs")

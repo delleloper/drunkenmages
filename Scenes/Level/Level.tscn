@@ -87,25 +87,25 @@ position = Vector2(336, 113)
 position = Vector2(236, 73)
 
 [node name="Platform10" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(128, 46)
+position = Vector2(127, 42)
 
 [node name="Platform11" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(335, 22)
+position = Vector2(334, 18)
 
 [node name="Platform12" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(335, 22)
+position = Vector2(334, 18)
 
 [node name="Platform13" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(238, -12)
+position = Vector2(237, -16)
 
 [node name="Platform14" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(119, -56)
+position = Vector2(118, -60)
 
 [node name="Platform15" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(339, -80)
+position = Vector2(338, -84)
 
 [node name="Platform16" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(226, -107)
+position = Vector2(225, -111)
 
 [node name="SolidPlatform" parent="." instance=ExtResource("4_pcemg")]
 position = Vector2(227, 256)
@@ -128,11 +128,30 @@ shape = SubResource("RectangleShape2D_upbgu")
 [node name="GoUpTrailer" type="Timer" parent="Camera2D"]
 
 [node name="PotionPickup" parent="." instance=ExtResource("6_8y87c")]
-position = Vector2(176, 325)
+position = Vector2(115, 268)
 potionClass = 3
+
+[node name="PotionPickup5" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(176, 322)
+
+[node name="PotionPickup6" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(165, 183)
 
 [node name="PotionPickup2" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(373, 264)
+
+[node name="PotionPickup7" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(121, -9)
+potionClass = 3
+
+[node name="PotionPickup8" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(253, 58)
+
+[node name="PotionPickup9" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(242, -81)
+
+[node name="PotionPickup10" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(330, -22)
 
 [node name="PotionPickup3" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(306, 187)
@@ -158,4 +177,9 @@ move_down = "move_down2"
 jump = "jump2"
 throw = "throw2"
 
+[node name="ResetTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

@@ -166,5 +166,8 @@ func pickPotion(potion, color):
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	dead.emit()
 
-	
+func enterTornado():
+	pass
+	#visible
+	#motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 
