@@ -5,7 +5,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uubp2"]
 friction = 0.5
-rough = true
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_080oj"]
@@ -52,6 +51,8 @@ _data = {
 [node name="Fireball" type="RigidBody2D" groups=["bodies"]]
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_uubp2")
+can_sleep = false
+linear_damp_mode = 1
 script = ExtResource("1_t1ddj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
