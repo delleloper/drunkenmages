@@ -152,6 +152,10 @@ shape = SubResource("RectangleShape2D_upbgu")
 position = Vector2(115, 268)
 potionClass = 3
 
+[node name="PotionPickup11" parent="." instance=ExtResource("6_8y87c")]
+position = Vector2(227, 233)
+potionClass = 1
+
 [node name="PotionPickup5" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(176, 322)
 potionClass = 2
@@ -200,13 +204,11 @@ move_down = "move_down2"
 jump = "jump2"
 throw = "throw2"
 
-
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [connection signal="body_entered" from="TileMap/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="TileMap/Area2D2" to="Player" method="_on_area_2d_2_body_entered_2"]
-
 [connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

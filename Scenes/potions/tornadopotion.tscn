@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4x12ya2c56pr"]
+[gd_scene load_steps=3 format=3 uid="uid://c725x7684tp1a"]
 
 [ext_resource type="PackedScene" uid="uid://b0yquoyt48r7" path="res://Scenes/projectile.tscn" id="1_7v3ft"]
 [ext_resource type="Script" path="res://Scenes/potions/tornadopotion.gd" id="2_tv34j"]
