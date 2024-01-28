@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c68gq0efi0b5j"]
+[gd_scene load_steps=15 format=3 uid="uid://blninsnqd7308"]
 
 [ext_resource type="Script" path="res://Scenes/trophy.gd" id="1_5cjd2"]
 [ext_resource type="Texture2D" uid="uid://cbf2lfsvo2eac" path="res://Assets/Trophy.png" id="1_ji4md"]

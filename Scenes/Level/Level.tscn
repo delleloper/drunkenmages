@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://0u6n7bg5bfgh" path="res://Scenes/potions/potion_pickup.tscn" id="6_8y87c"]
 [ext_resource type="Script" path="res://Scenes/Level/Camera2D.gd" id="6_msht2"]
 [ext_resource type="AudioStream" uid="uid://osey5ws1a62j" path="res://Assets/music/GGJ_-_Background_Main_Intro.wav" id="9_0mpfc"]
-[ext_resource type="PackedScene" uid="uid://c68gq0efi0b5j" path="res://Scenes/trophy.tscn" id="10_3rhkn"]
+[ext_resource type="PackedScene" uid="uid://blninsnqd7308" path="res://Scenes/trophy.tscn" id="10_3rhkn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3v623"]
 texture = ExtResource("5_f0wwk")

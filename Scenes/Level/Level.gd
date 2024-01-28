@@ -23,8 +23,7 @@ func _ready():
 		each.shake.connect(cameraShake)
 
 func game_over():
-	pass
-	#reset_timer.start(3)
+	reset_timer.start(3)
 
 func cameraShake():
 	camera_2d.applyShake()
