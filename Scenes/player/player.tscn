@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ckxdmagp50i5r"]
+[gd_scene load_steps=39 format=3 uid="uid://ckxdmagp50i5r"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ffpro"]
 [ext_resource type="Texture2D" uid="uid://cirkmmdqkvl1s" path="res://Assets/Potion/Potion.png" id="2_4qnii"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://ct4nyd13sykul" path="res://Assets/sfx/caida-fran.mp3" id="11_jdodc"]
 [ext_resource type="AudioStream" uid="uid://co31nn1ibtn8x" path="res://Assets/sfx/caida-oscar.mp3" id="12_dtl2c"]
 [ext_resource type="AudioStream" uid="uid://yufcqd8jrjev" path="res://Assets/sfx/01_agarrar_posion.mp3" id="12_hjtbx"]
+[ext_resource type="Texture2D" uid="uid://cbf2lfsvo2eac" path="res://Assets/Trophy.png" id="14_om7qk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4l4cs"]
 radius = 8.0
@@ -435,7 +436,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("Potion_sprite:texture")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -480,6 +481,42 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Potion_sprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Potion_sprite:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -56)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Potion_sprite:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ufc54"]
@@ -741,6 +778,143 @@ tracks/7/keys = {
 "values": [0, 1, 2, 3, 5]
 }
 
+[sub_resource type="Animation" id="Animation_36tvf"]
+resource_name = "Winner"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_4fs5q")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Potion_sprite:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_om7qk")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Potion_sprite:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Potion_sprite:vframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Potion_sprite:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Potion_sprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Potion_sprite:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -56)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Potion_sprite:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r16pk"]
 _data = {
 "Cast": SubResource("Animation_c5aax"),
@@ -751,7 +925,8 @@ _data = {
 "Roll": SubResource("Animation_ufc54"),
 "Slide": SubResource("Animation_3qiug"),
 "Stunned": SubResource("Animation_ii7xf"),
-"Walk": SubResource("Animation_5fuej")
+"Walk": SubResource("Animation_5fuej"),
+"Winner": SubResource("Animation_36tvf")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxkah"]
@@ -776,8 +951,7 @@ playerFallSounds = Array[AudioStream]([ExtResource("11_jdodc"), ExtResource("12_
 position = Vector2(0, -26)
 
 [node name="Potion_sprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-12, -15)
+position = Vector2(0, -56)
 texture = ExtResource("6_1m0sc")
 hframes = 6
 

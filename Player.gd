@@ -257,13 +257,9 @@ func _on_area_2d_body_entered_projectiles(body):
 		altered_state = Altered_State.HIT
 		Globals.playRandomSound($playerHit, ballHitSounds)
 		shake.emit()
-		
 
 func set_color(color : Color):
 	sprite.modulate = color
 
-
-	
-	
 func _on_collider_timer_timeout():
 	collision_shape_2d.disabled = false
