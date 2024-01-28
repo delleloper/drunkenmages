@@ -177,3 +177,15 @@ func enterTornado():
 	#visible
 	#motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 
+func _on_area_2d_body_entered(body):
+	if body is Player && altered_state != Altered_State.NONE:
+		player_bounce(1)
+		
+func _on_area_2d_2_body_entered_2(body):
+	if body is Player && altered_state != Altered_State.NONE:
+		player_bounce(-1)
+
+
+func player_bounce(dir):
+	velocity.x = 100 * dir
+	current_friction += 0.1
