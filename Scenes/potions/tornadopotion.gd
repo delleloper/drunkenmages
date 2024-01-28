@@ -6,5 +6,5 @@ func explode():
 	var tornado = TORNADO.instantiate()
 	tornado.global_position = global_position
 	addToscene(tornado)
-	queue_free()
 	super()
+	queue_free()

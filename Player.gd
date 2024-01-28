@@ -67,6 +67,12 @@ func _physics_process(delta):
 	handle_movement(delta)
 	handle_animations()
 	move_and_slide()
+	var push = 100
+	for index in get_slide_collision_count():
+		var collision : KinematicCollision2D = get_slide_collision(index)
+		var col = collision.get_collider()
+		if col.is_in_group("bodies"):
+			col.apply_central_impulse(-collision.get_normal() * push)
 	
 func handle_inputs() -> void:
 	if !Input.is_action_pressed(throw):
