@@ -4,6 +4,9 @@ var count = 2
 var readyForinput = false
 @onready var animation_player = $AnimationPlayer
 
+
+func _ready():
+	Engine.time_scale = 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if ready:
