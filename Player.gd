@@ -70,7 +70,7 @@ func _physics_process(delta):
 	move_and_slide()
 	#var push = 100
 	#for index in get_slide_collision_count():
-		#var collision : KinematicCollision2D = get_slide_collision(index)
+		#var collision : KinematicCollisio2D = get_slide_collision(index)
 		#var col = collision.get_collider()
 		#if not col is TileMap:
 			#print(collision, col)
@@ -175,6 +175,7 @@ func puddleSlide(multiplier):
 			velocity.x = 500 * (-1 if position.x < 240 else 1)
 				
 func pickPotion(potion, color):
+	$grabpotion.play()
 	currentPotion = potion
 	currentPotionColor = color
 

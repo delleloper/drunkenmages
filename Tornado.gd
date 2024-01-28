@@ -48,7 +48,8 @@ func _on_area_2d_body_entered(body):
 		tornado_victim.visible = true
 
 func _on_tornado_exit_timeout():
-	player_affected.exitTornado(global_position)
+	if player_affected != null:
+		player_affected.exitTornado(global_position)
 	is_player_affected = false
 	player_affected = null
 	tornado_victim.visible = false

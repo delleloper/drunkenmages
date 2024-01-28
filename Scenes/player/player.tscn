@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ckxdmagp50i5r"]
+[gd_scene load_steps=25 format=3 uid="uid://ckxdmagp50i5r"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ffpro"]
 [ext_resource type="Texture2D" uid="uid://cirkmmdqkvl1s" path="res://Assets/Potion/Potion.png" id="2_4qnii"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dw1id2xd1kml2" path="res://Assets/Player/Cast.png" id="9_4fs5q"]
 [ext_resource type="Texture2D" uid="uid://dtcegw1utleci" path="res://Assets/Player/Stunned.png" id="9_g41n1"]
 [ext_resource type="Texture2D" uid="uid://bbo8rdekp6w7t" path="res://Assets/Player/Slide.png" id="11_i8yk0"]
+[ext_resource type="AudioStream" uid="uid://yufcqd8jrjev" path="res://Assets/sfx/01_agarrar_posion.mp3" id="12_hjtbx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4l4cs"]
 radius = 8.0
@@ -777,7 +778,9 @@ libraries = {
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="grabpotion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_hjtbx")
+bus = &"sfx"
 
 [node name="Area2D" type="Area2D" parent="."]
 disable_mode = 2

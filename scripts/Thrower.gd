@@ -7,6 +7,7 @@ var throwDirection = Vector2.ZERO
 @onready var player : Player = owner  
 @onready var line_2d = $Line2D
 var enabled = true
+@onready var breakSound = $break
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -32,3 +33,5 @@ func throwProjectile():
 	get_tree().current_scene.add_child(throwable)
 	player.currentPotion = null
 	line_2d.clear_points()
+	throwable.tree_exited.connect(func(): breakSound.play())
+	
