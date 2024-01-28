@@ -13,7 +13,6 @@ func _ready():
 	animation_player.seek(animrand)
 	if potionClass == potionType.NONE:
 		potionClass = randi_range(1,4) 
-	print()
 	sprite_2d.modulate = get_color()
 
 func get_potion():
