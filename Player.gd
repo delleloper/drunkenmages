@@ -221,3 +221,5 @@ func _on_area_2d_body_entered_projectiles(body):
 			body.apply_impulse(Vector2(-150,0))
 		altered_state = Altered_State.HIT
 
+func set_color(color : Color):
+	sprite.modulate = color
