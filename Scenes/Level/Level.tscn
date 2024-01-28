@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://erf0kt12ms83"]
+[gd_scene load_steps=13 format=3 uid="uid://erf0kt12ms83"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_keilr"]
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_kyr7t"]
+[ext_resource type="Texture2D" uid="uid://c8s6hl0rrjdgk" path="res://Assets/Platforms/Background.png" id="2_wuval"]
 [ext_resource type="PackedScene" uid="uid://by33i7fusbxyy" path="res://Scenes/Level/Platforms/Platform_one_way.tscn" id="3_egqg0"]
 [ext_resource type="PackedScene" uid="uid://bs7sgj8ay07of" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
 [ext_resource type="Texture2D" uid="uid://ck61g83soe5y4" path="res://Assets/Platforms/Solid_platform.png" id="5_f0wwk"]
 [ext_resource type="PackedScene" uid="uid://0u6n7bg5bfgh" path="res://Scenes/potions/potion_pickup.tscn" id="6_8y87c"]
+[ext_resource type="Texture2D" uid="uid://cvsxe86j7s286" path="res://Assets/Potion/Trophy.png" id="8_nwovt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3v623"]
 texture = ExtResource("5_f0wwk")
@@ -50,13 +52,17 @@ physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_3v623")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgb71"]
-size = Vector2(0.5, 360)
+size = Vector2(1, 1299)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upbgu"]
 size = Vector2(450, 23)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_keilr")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(241, -1438)
+texture = ExtResource("2_wuval")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(160, 218)
@@ -70,7 +76,7 @@ position = Vector2(-151, -53)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Area2D"]
-position = Vector2(10.75, 0)
+position = Vector2(10.5, -476.5)
 shape = SubResource("RectangleShape2D_xgb71")
 debug_color = Color(0.105882, 0.901961, 0.470588, 0.917647)
 
@@ -79,7 +85,7 @@ position = Vector2(289, -53)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Area2D2"]
-position = Vector2(10.75, 0)
+position = Vector2(11.75, -479)
 shape = SubResource("RectangleShape2D_xgb71")
 debug_color = Color(0.105882, 0.901961, 0.470588, 0.917647)
 
@@ -90,46 +96,428 @@ position = Vector2(113, 293)
 position = Vector2(367, 293)
 
 [node name="Platform4" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(319, 210)
+position = Vector2(413, 238)
 
 [node name="Platform5" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(164, 212)
+position = Vector2(87, 234)
 
 [node name="Platform6" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(234, 146)
+position = Vector2(240, 146)
 
 [node name="Platform7" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(121, 121)
+position = Vector2(50, 121)
+
+[node name="Platform17" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(114, 121)
 
 [node name="Platform8" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(336, 113)
+position = Vector2(368, 113)
+
+[node name="Platform18" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(432, 113)
 
 [node name="Platform9" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(236, 73)
+position = Vector2(114, 73)
 
 [node name="Platform10" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(127, 42)
+position = Vector2(75, 8)
 
 [node name="Platform11" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(334, 18)
+position = Vector2(342, 10)
 
 [node name="Platform12" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(334, 18)
+position = Vector2(397, 69)
 
 [node name="Platform13" parent="." instance=ExtResource("3_egqg0")]
 position = Vector2(237, -16)
 
 [node name="Platform14" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(118, -60)
+position = Vector2(51, -33)
 
 [node name="Platform15" parent="." instance=ExtResource("3_egqg0")]
 position = Vector2(338, -84)
 
+[node name="Platform23" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(402, -84)
+
+[node name="Platform20" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(279, -132)
+
+[node name="Platform21" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(108, -84)
+
+[node name="Platform22" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(48, -144)
+
+[node name="Platform24" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(109, -194)
+
+[node name="Platform26" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(49, -473)
+
+[node name="Platform42" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(113, -473)
+
+[node name="Platform27" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(117, -603)
+
+[node name="Platform48" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(363, -599)
+
+[node name="Platform50" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(402, -654)
+
+[node name="Platform52" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(405, -750)
+
+[node name="Platform51" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(310, -704)
+
+[node name="Platform49" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(196, -661)
+
+[node name="Platform28" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(257, -826)
+
+[node name="Platform54" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(151, -870)
+
+[node name="Platform56" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(213, -924)
+
+[node name="Platform57" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(277, -924)
+
+[node name="Platform58" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(240, -971)
+
+[node name="Platform59" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(240, -1011)
+
+[node name="Platform55" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(48, -929)
+
+[node name="Platform53" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(87, -763)
+
+[node name="Platform29" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(82, -1076)
+
+[node name="Platform60" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(153, -1128)
+
+[node name="Platform62" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(300, -1072)
+
+[node name="Platform63" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(391, -1123)
+
+[node name="Platform64" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(429, -1176)
+
+[node name="Platform65" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(332, -1205)
+
+[node name="Platform67" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(387, -1263)
+
+[node name="Platform68" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(296, -1303)
+
+[node name="Platform61" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(98, -1180)
+
+[node name="Platform30" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(144, -1267)
+
+[node name="Platform66" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(52, -1326)
+
+[node name="Platform31" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(128, -1388)
+
+[node name="Platform69" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(270, -1390)
+
+[node name="Platform70" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(336, -1441)
+
+[node name="Platform71" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(186, -1442)
+
+[node name="Platform72" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(265, -1489)
+
+[node name="Platform74" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(201, -1556)
+
+[node name="Platform75" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(251, -1625)
+
+[node name="Platform73" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(126, -1500)
+
+[node name="Platform32" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(156, -1704)
+
+[node name="Platform77" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(49, -1620)
+
+[node name="Platform76" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(330, -1674)
+
+[node name="Platform78" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(419, -1722)
+
+[node name="Platform33" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(45, -1830)
+
+[node name="Platform81" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(109, -1830)
+
+[node name="Platform79" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(288, -1762)
+
+[node name="Platform80" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(391, -1798)
+
+[node name="Platform82" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(208, -1865)
+
+[node name="Platform87" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(387, -1904)
+
+[node name="Platform88" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(387, -1963)
+
+[node name="Platform89" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(318, -2025)
+
+[node name="Platform90" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(280, -2079)
+
+[node name="Platform91" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(355, -2134)
+
+[node name="Platform92" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(414, -2192)
+
+[node name="Platform83" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(98, -1914)
+
+[node name="Platform84" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(48, -1973)
+
+[node name="Platform85" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(114, -2030)
+
+[node name="Platform86" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(114, -2083)
+
+[node name="Platform93" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(170, -2140)
+
+[node name="Platform94" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(109, -2191)
+
+[node name="Platform95" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(204, -2244)
+
+[node name="Platform96" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(308, -2244)
+
+[node name="Platform25" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(49, -236)
+
+[node name="Platform39" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(159, -292)
+
+[node name="Platform40" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(99, -334)
+
+[node name="Platform41" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(155, -392)
+
+[node name="Platform43" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(225, -452)
+
+[node name="Platform46" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(81, -526)
+
+[node name="Platform45" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(336, -458)
+
+[node name="Platform44" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(432, -488)
+
+[node name="Platform47" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(432, -542)
+
+[node name="Platform19" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(280, -51)
+
 [node name="Platform16" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(225, -111)
+position = Vector2(200, -103)
+
+[node name="Platform34" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(398, -211)
+
+[node name="Platform35" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(342, -164)
+
+[node name="Platform36" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(195, -239)
+
+[node name="Platform37" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(259, -239)
+
+[node name="Platform38" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(357, -316)
 
 [node name="SolidPlatform" parent="." instance=ExtResource("4_pcemg")]
-position = Vector2(227, 256)
+position = Vector2(208, 202)
+
+[node name="SolidPlatform8" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(144, 202)
+
+[node name="SolidPlatform8" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(129, -606)
+
+[node name="SolidPlatform9" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(32, -749)
+
+[node name="SolidPlatform16" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(96, -749)
+
+[node name="SolidPlatform17" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(160, -749)
+
+[node name="SolidPlatform10" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(145, -984)
+
+[node name="SolidPlatform20" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(252, -1064)
+
+[node name="SolidPlatform19" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(81, -984)
+
+[node name="SolidPlatform18" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(-3, -923)
+
+[node name="SolidPlatform11" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(96, -1295)
+rotation = 1.5708
+
+[node name="SolidPlatform27" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(96, -1295)
+rotation = -1.5708
+
+[node name="SolidPlatform28" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(96, -1359)
+rotation = 1.5708
+
+[node name="SolidPlatform29" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(96, -1359)
+rotation = -1.5708
+
+[node name="SolidPlatform30" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(77, -2158)
+rotation = -1.5708
+
+[node name="SolidPlatform31" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(77, -2221)
+rotation = -1.5708
+
+[node name="SolidPlatform32" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(77, -2285)
+rotation = -1.5708
+
+[node name="SolidPlatform21" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(-32, -1230)
+
+[node name="SolidPlatform22" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(-96, -1230)
+
+[node name="SolidPlatform24" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(32, -1230)
+
+[node name="SolidPlatform23" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(223, -1230)
+
+[node name="SolidPlatform25" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(159, -1230)
+
+[node name="SolidPlatform26" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(287, -1230)
+
+[node name="SolidPlatform12" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(96, -1407)
+
+[node name="SolidPlatform13" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(59, -1535)
+
+[node name="SolidPlatform14" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(170, -1777)
+
+[node name="SolidPlatform15" parent="SolidPlatform8" instance=ExtResource("4_pcemg")]
+position = Vector2(170, -2057)
+
+[node name="SolidPlatform9" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(272, 34)
+
+[node name="SolidPlatform8" parent="SolidPlatform9" instance=ExtResource("4_pcemg")]
+position = Vector2(160, -303)
+
+[node name="SolidPlatform13" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(433, -342)
+
+[node name="SolidPlatform8" parent="SolidPlatform13" instance=ExtResource("4_pcemg")]
+position = Vector2(-80, -62)
+
+[node name="SolidPlatform10" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(208, 34)
+
+[node name="SolidPlatform8" parent="SolidPlatform10" instance=ExtResource("4_pcemg")]
+position = Vector2(160, -303)
+
+[node name="SolidPlatform14" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(187, -170)
+
+[node name="SolidPlatform8" parent="SolidPlatform14" instance=ExtResource("4_pcemg")]
+position = Vector2(-139, -124)
+
+[node name="SolidPlatform11" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(155, -74)
+rotation = 1.5708
+
+[node name="SolidPlatform12" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(155, -138)
+rotation = 1.5708
+
+[node name="SolidPlatform8" parent="SolidPlatform12" instance=ExtResource("4_pcemg")]
+position = Vector2(-234, -166)
+
+[node name="SolidPlatform6" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(272, 202)
+
+[node name="SolidPlatform7" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(336, 202)
+
+[node name="SolidPlatform2" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(224, 314)
+rotation = -1.57079
+
+[node name="SolidPlatform3" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(256, 314)
+rotation = 1.5708
+
+[node name="SolidPlatform4" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(224, 250)
+rotation = -1.57079
+
+[node name="SolidPlatform5" parent="." instance=ExtResource("4_pcemg")]
+position = Vector2(256, 250)
+rotation = 1.5708
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(241, 180)
@@ -153,7 +541,7 @@ position = Vector2(115, 268)
 potionClass = 3
 
 [node name="PotionPickup11" parent="." instance=ExtResource("6_8y87c")]
-position = Vector2(227, 233)
+position = Vector2(239, 189)
 potionClass = 1
 
 [node name="PotionPickup5" parent="." instance=ExtResource("6_8y87c")]
@@ -161,7 +549,7 @@ position = Vector2(176, 322)
 potionClass = 2
 
 [node name="PotionPickup6" parent="." instance=ExtResource("6_8y87c")]
-position = Vector2(165, 183)
+position = Vector2(88, 205)
 
 [node name="PotionPickup2" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(373, 264)
@@ -172,7 +560,7 @@ position = Vector2(121, -9)
 potionClass = 3
 
 [node name="PotionPickup8" parent="." instance=ExtResource("6_8y87c")]
-position = Vector2(253, 58)
+position = Vector2(253, 19)
 
 [node name="PotionPickup9" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(242, -81)
@@ -181,7 +569,7 @@ position = Vector2(242, -81)
 position = Vector2(330, -22)
 
 [node name="PotionPickup3" parent="." instance=ExtResource("6_8y87c")]
-position = Vector2(306, 187)
+position = Vector2(400, 215)
 
 [node name="PotionPickup4" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(292, 324)
@@ -207,6 +595,11 @@ throw = "throw2"
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Trophy" type="Sprite2D" parent="."]
+position = Vector2(240, -3089)
+scale = Vector2(3, 3)
+texture = ExtResource("8_nwovt")
 
 [connection signal="body_entered" from="TileMap/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="TileMap/Area2D2" to="Player" method="_on_area_2d_2_body_entered_2"]
