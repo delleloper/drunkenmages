@@ -769,7 +769,6 @@ texture_filter = 1
 texture = ExtResource("2_24bh4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_4l4cs")
 debug_color = Color(0, 0.6, 0.701961, 0.2)
 
@@ -779,7 +778,6 @@ libraries = {
 }
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-visible = false
 
 [node name="grabpotion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_hjtbx")
@@ -793,7 +791,6 @@ input_pickable = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_bxkah")
 
