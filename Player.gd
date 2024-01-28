@@ -11,7 +11,9 @@ enum Drunken_Status{
 enum Altered_State{
 	NONE,
 	ROLLING,
-	HIT
+	HIT,
+	SLIDING,
+	SPINNING
 }
 
 @export_category("Default Stats")
@@ -147,8 +149,16 @@ func puddleJump(multiplier):
 		altered_state = Altered_State.ROLLING
 		if velocity.is_zero_approx():
 			velocity.y = -500
-	
-	
+
+func puddleSlide(multiplier):
+	if velocity.y >= 0:
+		direction = Vector2.ZERO
+		current_friction = current_friction * 0.2
+		velocity.x = velocity.x * multiplier
+		altered_state = Altered_State.ROLLING
+		if velocity.is_zero_approx():
+			velocity.x = 500 * (-1 if position.x < 240 else 1)
+				
 func pickPotion(potion, color):
 	currentPotion = potion
 	currentPotionColor = color

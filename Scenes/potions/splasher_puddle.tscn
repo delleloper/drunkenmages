@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddhrxg8e2ylk3"]
+[gd_scene load_steps=8 format=3 uid="uid://ddhrxg8e2ylk3"]
 
 [ext_resource type="PackedScene" uid="uid://spamqw5vr6tu" path="res://Scenes/potions/puddle.tscn" id="1_pqkcg"]
 [ext_resource type="Texture2D" uid="uid://tmnee1hlalmn" path="res://Assets/puddle/OilSpawn.png" id="2_2h1g5"]
+[ext_resource type="Script" path="res://Scenes/potions/splasher_puddle.gd" id="2_autrq"]
 
 [sub_resource type="Animation" id="Animation_68tcr"]
 length = 0.001
@@ -132,6 +133,8 @@ _data = {
 }
 
 [node name="Puddle" instance=ExtResource("1_pqkcg")]
+script = ExtResource("2_autrq")
+multiplier = 2.5
 
 [node name="CollisionShape2D" parent="." index="0"]
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
@@ -143,6 +146,3 @@ texture = ExtResource("2_2h1g5")
 libraries = {
 "": SubResource("AnimationLibrary_tv8rx")
 }
-
-[node name="CollisionShape2D2" parent="Puddle" index="0"]
-disabled = true
