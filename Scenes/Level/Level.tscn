@@ -279,7 +279,10 @@ position = Vector2(45, -1830)
 position = Vector2(109, -1830)
 
 [node name="Platform79" parent="." instance=ExtResource("3_egqg0")]
-position = Vector2(288, -1762)
+position = Vector2(299, -1750)
+
+[node name="Platform121" parent="." instance=ExtResource("3_egqg0")]
+position = Vector2(196, -1789)
 
 [node name="Platform80" parent="." instance=ExtResource("3_egqg0")]
 position = Vector2(391, -1798)
@@ -706,7 +709,7 @@ potionClass = 2
 position = Vector2(313, -1616)
 
 [node name="PotionPickup22" parent="." instance=ExtResource("6_8y87c")]
-position = Vector2(290, -1794)
+position = Vector2(297, -1779)
 
 [node name="PotionPickup23" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(171, -1942)
@@ -767,6 +770,9 @@ position = Vector2(292, 324)
 
 [node name="Trophy" parent="." instance=ExtResource("10_3rhkn")]
 position = Vector2(240, -3102)
+
+[node name="Trophy2" parent="." instance=ExtResource("10_3rhkn")]
+position = Vector2(-193, 164)
 
 [node name="Player" parent="." instance=ExtResource("1_kyr7t")]
 position = Vector2(57, 328)
