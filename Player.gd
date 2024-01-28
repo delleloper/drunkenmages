@@ -13,7 +13,8 @@ enum Altered_State{
 	ROLLING,
 	HIT,
 	SLIDING,
-	SPINNING
+	SPINNING,
+	WIN
 }
 
 @export_category("Default Stats")
@@ -152,6 +153,9 @@ func handle_animations() -> void:
 		Altered_State.SLIDING:
 			animation_player.play("Slide")
 			hide_potion()
+		Altered_State.WIN:
+			animation_player.play("Winner")
+			velocity = Vector2.ZERO
 	
 	if velocity.x < 0:
 		sprite.flip_h = true

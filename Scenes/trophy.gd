@@ -3,7 +3,8 @@ extends Area2D
 
 func _on_body_entered(body):
 	owner.victory(body.number)
-	animation_player.play("win")
+	body.altered_state = body.Altered_State.WIN
+	visible = false
 	owner.cameraShake()
 
 func change():
