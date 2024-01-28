@@ -22,7 +22,7 @@ var current_speed : float
 @export_range(0.0, 10.0) var acceleration : int = 1
 var current_acceleration : int
 @export_range(0.0, 10.0) var friction : int = 1
-var current_friction : int
+var current_friction : float
 @export var jump_velocity : float = 150.0
 var current_jump_velocity : float
 
