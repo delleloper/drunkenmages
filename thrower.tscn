@@ -46,7 +46,7 @@ shape = SubResource("CircleShape2D_vxind")
 
 [node name="break" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_cwtnn")
-volume_db = 23.005
+volume_db = 5.0
 bus = &"sfx"
 
 [node name="throw" type="AudioStreamPlayer" parent="."]

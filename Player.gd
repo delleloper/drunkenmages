@@ -40,6 +40,14 @@ const LERP_MULTIPLIER = 0.01
 @export var move_down : String = "move_down"
 @export var jump : String = "jump"
 @export var throw : String = "throw"
+@export_category("Sounds")
+@export var ballHitSounds : Array[AudioStream]
+@export var playerSlideSounds : Array[AudioStream]
+@export var playerJumpSounds : Array[AudioStream]
+@export var playerSpinSounds : Array[AudioStream]
+@export var playerMineSounds : Array[AudioStream]
+@export var playerFallSounds : Array[AudioStream]
+
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite
 @onready var thrower = $Thrower
@@ -94,6 +102,7 @@ func handle_inputs() -> void:
 			collider_timer.start(.1)
 		else:
 			velocity.y = -current_jump_velocity
+			Globals.playRandomSound($playerJump, playerJumpSounds)
 			
 func handle_movement(delta) -> void:
 	if not is_on_floor():
@@ -109,6 +118,10 @@ func handle_movement(delta) -> void:
 		current_friction = friction
 	if altered_state == Altered_State.ROLLING:
 		current_friction = 2
+	#if velocity.y > 350:
+		#Globals.playRandomSound($playerFall, playerFallSounds)
+	#if is_on_floor() && $playerFall.playing:
+		#Globals.stopSound($playerFall)
 		
 func handle_animations() -> void:
 	match altered_state:
@@ -172,6 +185,7 @@ func puddleJump(multiplier):
 		velocity.y = clamp(velocity.y * -1 * multiplier, -500, 500)
 		velocity.x = velocity.x * multiplier * (-1 if is_on_floor() else 1)
 		altered_state = Altered_State.ROLLING
+		Globals.playRandomSound($playerMine, playerMineSounds)
 		if velocity.is_zero_approx():
 			velocity.y = -500
 
@@ -181,6 +195,7 @@ func puddleSlide(multiplier):
 		current_friction = current_friction * 0.55
 		velocity.x = velocity.x * multiplier
 		altered_state = Altered_State.SLIDING
+		Globals.playRandomSound($playerSlide, playerSlideSounds)
 		if velocity.is_zero_approx():
 			velocity.x = 500 * (-1 if position.x < 240 else 1)
 				
@@ -199,6 +214,7 @@ func enterTornado():
 	visible = false
 	thrower.enabled = false
 	altered_state = Altered_State.SPINNING
+	Globals.playRandomSound($playerSpin, playerSpinSounds)
 
 func exitTornado(position):
 	global_position = position
@@ -206,7 +222,7 @@ func exitTornado(position):
 	visible = true
 	altered_state = Altered_State.ROLLING
 	velocity = Vector2(randf_range(-2,2) * 300, -500)
-	current_friction += .5
+	current_friction = 3
 	shake.emit()
 	thrower.enabled = true
 	
@@ -235,6 +251,7 @@ func _on_area_2d_body_entered_projectiles(body):
 			velocity.x = 300
 			body.apply_impulse(Vector2(-150,0))
 		altered_state = Altered_State.HIT
+		Globals.playRandomSound($playerHit, ballHitSounds)
 		shake.emit()
 		
 
