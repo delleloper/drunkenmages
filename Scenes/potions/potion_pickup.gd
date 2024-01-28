@@ -14,11 +14,7 @@ func _ready():
 	animation_player.seek(animrand)
 	if potionClass == null:
 		queue_free()
-	match potionClass:
-		potionType.JUMPER:
-			sprite_2d.modulate = Color.YELLOW
-		potionType.JUMPER:
-			sprite_2d.modulate = Color.NAVY_BLUE
+	sprite_2d.modulate = get_color()
 
 func get_potion():
 	match potionClass:
@@ -28,7 +24,12 @@ func get_potion():
 			return preload("res://Scenes/potions/splasher.tscn")
 
 func get_color():
-	return Color.YELLOW
+	match potionClass:
+		potionType.JUMPER:
+			return Color.YELLOW
+		potionType.SPLASHER:
+			return Color.NAVY_BLUE
+
 
 func _on_body_entered(body):
 	if body is Player:
