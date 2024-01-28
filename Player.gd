@@ -256,7 +256,7 @@ func _on_area_2d_body_entered_projectiles(body):
 			body.apply_impulse(Vector2(-150,0))
 		altered_state = Altered_State.HIT
 		Globals.playRandomSound($playerHit, ballHitSounds)
-		shake.emit(number)
+		shake.emit()
 		
 
 func set_color(color : Color):

@@ -217,5 +217,6 @@ texture = ExtResource("5_4ftjo")
 
 [node name="VideoStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_uv60e")
+bus = &"music"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
