@@ -8,7 +8,7 @@ var throwDirection = Vector2.ZERO
 @onready var line_2d = $Line2D
 var enabled = true
 @onready var breakSound = $break
-
+@export var throwSounds : Array[AudioStream]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if player.currentPotion == null:
@@ -33,5 +33,9 @@ func throwProjectile():
 	get_tree().current_scene.add_child(throwable)
 	player.currentPotion = null
 	line_2d.clear_points()
+	throwSounds.shuffle()
+	$throw.stream = throwSounds[0]
+	$throw.play()
+	
 	throwable.tree_exited.connect(func(): breakSound.play())
 	
