@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://0u6n7bg5bfgh"]
 
 [ext_resource type="Script" path="res://Scenes/potions/potion_pickup.gd" id="1_54vy5"]
+[ext_resource type="Texture2D" uid="uid://cirkmmdqkvl1s" path="res://Assets/Potion/Potion.png" id="1_nvby3"]
 [ext_resource type="Texture2D" uid="uid://b77twucxhkcsq" path="res://Assets/potions/Particula1.png" id="2_2ybm6"]
-[ext_resource type="Texture2D" uid="uid://dnlcrdp3sqtb5" path="res://Assets/potions/PotaAzul.png" id="2_mj6os"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6nf5u"]
 particles_animation = true
@@ -101,7 +101,7 @@ script = ExtResource("1_54vy5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1.775)
-texture = ExtResource("2_mj6os")
+texture = ExtResource("1_nvby3")
 hframes = 6
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
