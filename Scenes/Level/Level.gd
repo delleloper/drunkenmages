@@ -4,6 +4,7 @@ extends Node2D
 @onready var camera_2d = $Camera2D
 @export var camera_speed = 0
 @export var player2Color :Color
+@onready var label = $Control/Label
 
 var players : Array
 func _process(delta):
@@ -22,16 +23,18 @@ func _ready():
 		each.dead.connect(game_over)
 		each.shake.connect(cameraShake)
 
-func game_over():
-	pass
-	#reset_timer.start(3)
+func game_over(player_number):
+	reset_timer.start(3) 
 
 func cameraShake():
 	camera_2d.applyShake()
 
 func _on_reset_timer_timeout():
 	get_tree().reload_current_scene()
+@onready var animation_player = $Control/AnimationPlayer
 
-func victory():
+func victory(number: int):
 	Engine.time_scale = 0.5
+	label.text.replace("X",number)
+	animation_player.play("victory")
 	

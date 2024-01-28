@@ -54,13 +54,13 @@ const LERP_MULTIPLIER = 0.01
 @onready var potion_sprite : Sprite2D = $Potion_sprite
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var collider_timer = $collider_timer
-
+@export var number : int
 
 var currentPotion : PackedScene
 var currentPotionColor : Color
 var onCooldown = false
 
-signal dead
+signal dead(number)
 signal shake
 
 
@@ -206,7 +206,7 @@ func pickPotion(potion, color):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	if visible:
-		dead.emit()
+		dead.emit(number)
 
 func enterTornado():
 	#visible
@@ -252,7 +252,7 @@ func _on_area_2d_body_entered_projectiles(body):
 			body.apply_impulse(Vector2(-150,0))
 		altered_state = Altered_State.HIT
 		Globals.playRandomSound($playerHit, ballHitSounds)
-		shake.emit()
+		shake.emit(number)
 		
 
 func set_color(color : Color):

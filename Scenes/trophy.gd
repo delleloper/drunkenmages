@@ -2,7 +2,7 @@ extends Area2D
 @onready var animation_player = $AnimationPlayer
 
 func _on_body_entered(body):
-	owner.victory()
+	owner.victory(body.number)
 	animation_player.play("win")
 	owner.cameraShake()
 

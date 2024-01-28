@@ -1,4 +1,149 @@
-[gd_scene format=3 uid="uid://b4ha5g10lip15"]
+[gd_scene load_steps=10 format=3 uid="uid://b4ha5g10lip15"]
+
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_fja48"]
+[ext_resource type="Texture2D" uid="uid://bepstqgc5753p" path="res://Assets/menus/Disclaimer.png" id="2_ujifn"]
+[ext_resource type="Texture2D" uid="uid://c8s6hl0rrjdgk" path="res://Assets/Platforms/Background.png" id="3_m1sdn"]
+[ext_resource type="Texture2D" uid="uid://om8swaqd034d" path="res://Assets/menus/SplashTitle.png" id="4_4msb2"]
+[ext_resource type="Texture2D" uid="uid://ttxayr7hlle5" path="res://Assets/menus/SplashInfo.png" id="5_4ftjo"]
+
+[sub_resource type="Animation" id="Animation_n5ewa"]
+resource_name = "init"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disclaimer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3239)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SplashTitle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 2.2, 2.4, 2.6, 2.8, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(240, -58), Vector2(240, 215), Vector2(240, 202), Vector2(240, 215), Vector2(240, 237), Vector2(240, 215), Vector2(240, 57)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SplashInfo:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xdsjm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disclaimer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3239)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SplashTitle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, -58)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SplashInfo:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c8e85"]
+resource_name = "idle"
+length = 30.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -3239), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SplashTitle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.3, 10.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(240, 215), Vector2(240, 200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gc47u"]
+_data = {
+"RESET": SubResource("Animation_xdsjm"),
+"idle": SubResource("Animation_c8e85"),
+"init": SubResource("Animation_n5ewa")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +152,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fja48")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -3239.0
+offset_right = 480.0
+offset_bottom = 361.0
+texture = ExtResource("3_m1sdn")
+
+[node name="Disclaimer" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ujifn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gc47u")
+}
+autoplay = "init"
+
+[node name="SplashTitle" type="Sprite2D" parent="."]
+position = Vector2(240, -58)
+texture = ExtResource("4_4msb2")
+
+[node name="SplashInfo" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(231, 235)
+texture = ExtResource("5_4ftjo")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

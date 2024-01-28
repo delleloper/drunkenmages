@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://erf0kt12ms83"]
+[gd_scene load_steps=20 format=3 uid="uid://erf0kt12ms83"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_keilr"]
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_kyr7t"]
 [ext_resource type="Texture2D" uid="uid://c8s6hl0rrjdgk" path="res://Assets/Platforms/Background.png" id="2_wuval"]
 [ext_resource type="PackedScene" uid="uid://by33i7fusbxyy" path="res://Scenes/Level/Platforms/Platform_one_way.tscn" id="3_egqg0"]
-[ext_resource type="PackedScene" uid="uid://bs7sgj8ay07of" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
+[ext_resource type="PackedScene" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
 [ext_resource type="Texture2D" uid="uid://ck61g83soe5y4" path="res://Assets/Platforms/Solid_platform.png" id="5_f0wwk"]
 [ext_resource type="PackedScene" uid="uid://0u6n7bg5bfgh" path="res://Scenes/potions/potion_pickup.tscn" id="6_8y87c"]
 [ext_resource type="Script" path="res://Scenes/Level/Camera2D.gd" id="6_msht2"]
-[ext_resource type="AudioStream" uid="uid://osey5ws1a62j" path="res://Assets/music/GGJ_-_Background_Main_Intro.wav" id="9_0mpfc"]
+[ext_resource type="AudioStream" uid="uid://2pah5un6eu4a" path="res://Assets/music/GGJ_-_Trippin_potionz_-_Background_Main_.wav" id="10_2n5eq"]
 [ext_resource type="PackedScene" uid="uid://c68gq0efi0b5j" path="res://Scenes/trophy.tscn" id="10_3rhkn"]
+[ext_resource type="FontFile" uid="uid://jxgdrqvf0y4j" path="res://Assets/GothicPixels.ttf" id="11_7tv67"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3v623"]
 texture = ExtResource("5_f0wwk")
@@ -58,6 +59,46 @@ size = Vector2(1, 3575)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upbgu"]
 size = Vector2(450, 23)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ovc2v"]
+font = ExtResource("11_7tv67")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_vsjom"]
+resource_name = "victory"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mo1wl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wx1wd"]
+_data = {
+"RESET": SubResource("Animation_mo1wl"),
+"victory": SubResource("Animation_vsjom")
+}
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_keilr")
@@ -785,6 +826,7 @@ move_up = "move_up1"
 move_down = "move_down1"
 jump = "jump1"
 throw = "throw1"
+number = 1
 
 [node name="Player2" parent="." instance=ExtResource("1_kyr7t")]
 position = Vector2(432, 328)
@@ -794,15 +836,50 @@ move_up = "move_up2"
 move_down = "move_down2"
 jump = "jump2"
 throw = "throw2"
+number = 2
 
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_0mpfc")
+stream = ExtResource("10_2n5eq")
 autoplay = true
 bus = &"music"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = -33.5
+offset_right = 158.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player X Loses"
+label_settings = SubResource("LabelSettings_ovc2v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_wx1wd")
+}
 
 [connection signal="body_entered" from="TileMap/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="TileMap/Area2D2" to="Player" method="_on_area_2d_2_body_entered_2"]
