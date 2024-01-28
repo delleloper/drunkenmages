@@ -33,5 +33,6 @@ func get_color():
 
 func _on_body_entered(body):
 	if body is Player:
-		body.pickPotion(get_potion(), get_color())
-		queue_free()
+		if body.currentPotion == null:
+			body.pickPotion(get_potion(), get_color())
+			queue_free()

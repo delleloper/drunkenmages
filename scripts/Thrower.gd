@@ -3,8 +3,6 @@ extends Node2D
 var throwing = true
 var throwDirection = Vector2.ZERO
 #TODO change current in player script
-@export var currentPotion : PackedScene
-var currentPotionColor : Color
 @export var throw_speed : int
 @onready var player : Player = owner  
 @onready var line_2d = $Line2D
@@ -12,13 +10,13 @@ var enabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if currentPotion == null:
+	if player.currentPotion == null:
 		return
 	if !enabled:
 		return
 
 	throwing = Input.is_action_pressed(player.throw)
-	if throwing && currentPotion:
+	if throwing && player.currentPotion:
 		throwDirection = Input.get_vector(player.move_left, player.move_right, player.move_up, player.move_down)
 		line_2d.update_trajectory(throwDirection,throw_speed,_delta)
 	line_2d.visible = throwing && !throwDirection.is_zero_approx()
@@ -27,9 +25,9 @@ func _process(_delta):
 
 
 func throwProjectile():
-	var throwable : RigidBody2D = currentPotion.instantiate()
+	var throwable : RigidBody2D = player.currentPotion.instantiate()
 	throwable.apply_central_impulse(throwDirection * throw_speed)
 	throwable.global_position = global_position
 	get_tree().current_scene.add_child(throwable)
-	currentPotion = null
+	player.currentPotion = null
 	line_2d.clear_points()

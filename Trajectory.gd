@@ -6,7 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var collided = false
 
 func update_trajectory( dir: Vector2, speed: float, delta: float):
-	var max_points =50
+	var max_points =350
 	clear_points()
 	var pos : Vector2 = Vector2.ZERO
 	var vel = dir * speed

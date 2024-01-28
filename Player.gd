@@ -43,6 +43,9 @@ const LERP_MULTIPLIER = 0.01
 @onready var thrower = $Thrower
 @onready var potion_sprite : Sprite2D = $Potion_sprite
 
+var currentPotion : PackedScene
+var currentPotionColor : Color
+
 signal dead
 
 func _ready():
@@ -121,17 +124,17 @@ func handle_animations() -> void:
 func hide_potion():
 	potion_sprite.visible = false
 func side_potion():
-	if thrower.currentPotion:
+	if currentPotion:
 		potion_sprite.visible = true
-		potion_sprite.modulate = thrower.currentPotionColor
+		potion_sprite.modulate = currentPotionColor
 		potion_sprite.position.x = 12 if sprite.flip_h else -12
 		potion_sprite.position.y = -15
 	else:
 		potion_sprite.visible = false
 func center_potion():
-	if thrower.currentPotion:
+	if currentPotion:
 		potion_sprite.visible = true
-		potion_sprite.modulate = thrower.currentPotionColor
+		potion_sprite.modulate = currentPotionColor
 		potion_sprite.position.x = 0
 		potion_sprite.position.y = -25
 		
@@ -147,8 +150,8 @@ func puddleJump(multiplier):
 	
 	
 func pickPotion(potion, color):
-	thrower.currentPotion = potion
-	thrower.currentPotionColor = color
+	currentPotion = potion
+	currentPotionColor = color
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	dead.emit()
