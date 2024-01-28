@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckxdmagp50i5r"]
+[gd_scene load_steps=24 format=3 uid="uid://ckxdmagp50i5r"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ffpro"]
 [ext_resource type="Texture2D" uid="uid://cirkmmdqkvl1s" path="res://Assets/Potion/Potion.png" id="2_4qnii"]
@@ -741,6 +741,10 @@ _data = {
 "Walk": SubResource("Animation_5fuej")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxkah"]
+radius = 11.0
+height = 36.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_ffpro")
@@ -750,6 +754,7 @@ friction = 8
 jump_velocity = 350.0
 
 [node name="Thrower" parent="." instance=ExtResource("3_dpifc")]
+position = Vector2(0, -26)
 
 [node name="Potion_sprite" type="Sprite2D" parent="."]
 visible = false
@@ -774,4 +779,16 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="Area2D" type="Area2D" parent="."]
+disable_mode = 2
+collision_layer = 3
+collision_mask = 5
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_bxkah")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered_projectiles"]

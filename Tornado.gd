@@ -4,7 +4,11 @@ var direction : Vector2
 @export var speed : int = 100
 @onready var change_direction = $changeDirection
 @onready var tornado_victim = $TornadoVictim
+@onready var timer = $Timer
+@onready var tornado_exit = $TornadoExit
 
+var is_player_affected = false
+var player_affected : Player = null
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
@@ -13,7 +17,7 @@ func _ready():
 	else:
 		direction = Vector2.RIGHT
 	change_direction.start(randf_range(1, 5))
-	
+	timer.start(8)
 
 func _physics_process(delta):
 	velocity = velocity.move_toward(direction * speed,delta * 20)
@@ -25,7 +29,9 @@ func _physics_process(delta):
 
 
 func _on_timer_timeout():
-	pass # Replace with function body.
+	if is_player_affected:
+		player_affected.exitTornado(global_position)
+	queue_free()
 
 
 func _on_change_direction_timeout():
@@ -34,6 +40,15 @@ func _on_change_direction_timeout():
 	
 
 func _on_area_2d_body_entered(body):
-	if body is Player:
+	if body is Player && !player_affected:
+		tornado_exit.start(3)
 		body.enterTornado()
+		player_affected = body
+		is_player_affected = true
 		tornado_victim.visible = true
+
+func _on_tornado_exit_timeout():
+	player_affected.exitTornado(global_position)
+	is_player_affected = false
+	player_affected = null
+	tornado_victim.visible = false

@@ -45,6 +45,7 @@ const LERP_MULTIPLIER = 0.01
 @onready var thrower = $Thrower
 @onready var potion_sprite : Sprite2D = $Potion_sprite
 
+
 var currentPotion : PackedScene
 var currentPotionColor : Color
 
@@ -67,12 +68,15 @@ func _physics_process(delta):
 	handle_movement(delta)
 	handle_animations()
 	move_and_slide()
-	var push = 100
-	for index in get_slide_collision_count():
-		var collision : KinematicCollision2D = get_slide_collision(index)
-		var col = collision.get_collider()
-		if col.is_in_group("bodies"):
-			col.apply_central_impulse(-collision.get_normal() * push)
+	#var push = 100
+	#for index in get_slide_collision_count():
+		#var collision : KinematicCollision2D = get_slide_collision(index)
+		#var col = collision.get_collider()
+		#if not col is TileMap:
+			#print(collision, col)
+		#if col.is_in_group("bodies"):
+			#print("collide")
+			#col.apply_central_impulse(-collision.get_normal() * push)
 	
 func handle_inputs() -> void:
 	if !Input.is_action_pressed(throw):
@@ -91,9 +95,11 @@ func handle_movement(delta) -> void:
 		velocity.x = lerp(velocity.x, 0.0, current_friction * LERP_MULTIPLIER)
 		if velocity.x < 3 && velocity.x > -3:
 			velocity.x = 0
-	if abs(velocity.x) < 20 && abs(velocity.y) < 3 && (altered_state == Altered_State.ROLLING || altered_state == Altered_State.SLIDING):
+	if abs(velocity.x) < 20 && abs(velocity.y) < 3 && (altered_state == Altered_State.ROLLING || altered_state == Altered_State.SLIDING || altered_state == Altered_State.HIT):
 		altered_state = Altered_State.NONE
 		current_friction = friction
+	if altered_state == Altered_State.ROLLING:
+		current_friction = 2
 		
 func handle_animations() -> void:
 	match altered_state:
@@ -119,7 +125,7 @@ func handle_animations() -> void:
 			hide_potion()
 			thrower.enabled = false
 		Altered_State.HIT:
-			animation_player.play("Hit")
+			animation_player.play("Stunned")
 			hide_potion()
 		Altered_State.SLIDING:
 			animation_player.play("Slide")
@@ -173,13 +179,23 @@ func pickPotion(potion, color):
 	currentPotionColor = color
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	dead.emit()
+	if visible:
+		dead.emit()
 
 func enterTornado():
-	pass
 	#visible
 	#motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	visible = false
+	altered_state = Altered_State.SPINNING
 
+func exitTornado(position):
+	global_position = position
+	position.y -= 50
+	visible = true
+	altered_state = Altered_State.ROLLING
+	velocity = Vector2(randf_range(-2,2) * 300, -500)
+	current_friction += .5
+	
 func _on_area_2d_body_entered(body):
 	if body is Player && altered_state != Altered_State.NONE:
 		player_bounce(1)
@@ -191,4 +207,16 @@ func _on_area_2d_2_body_entered_2(body):
 
 func player_bounce(dir):
 	velocity.x = 100 * dir
-	current_friction += 1
+	current_friction += 3
+
+
+func _on_area_2d_body_entered_projectiles(body):
+	if body is RigidBody2D:
+		if body.position.x > position.x:
+			velocity.x = -300
+			body.apply_impulse(Vector2(150,0))
+		else:
+			velocity.x = 300
+			body.apply_impulse(Vector2(-150,0))
+		altered_state = Altered_State.HIT
+

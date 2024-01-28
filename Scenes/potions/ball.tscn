@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cytjts7yn14qr"]
+[gd_scene load_steps=9 format=3 uid="uid://cytjts7yn14qr"]
 
 [ext_resource type="Texture2D" uid="uid://c17atp3a54m6m" path="res://Assets/potions/fireball/Pinball.png" id="1_fl3c6"]
 [ext_resource type="Script" path="res://Scenes/potions/ball.gd" id="1_t1ddj"]
@@ -8,6 +8,8 @@ bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_080oj"]
 radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pf43g"]
 
 [sub_resource type="Animation" id="Animation_12jsd"]
 length = 0.001
@@ -47,16 +49,23 @@ _data = {
 "idle": SubResource("Animation_bi42x")
 }
 
-[node name="Fireball" type="RigidBody2D" groups=["bodies"]]
-collision_layer = 0
+[node name="Fireball" type="RigidBody2D" groups=["bodies", "projectile"]]
+collision_layer = 4
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_uubp2")
+gravity_scale = 0.3
+inertia = 1.91
 can_sleep = false
 linear_damp_mode = 1
 script = ExtResource("1_t1ddj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_080oj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pf43g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fl3c6")
@@ -67,3 +76,6 @@ libraries = {
 "": SubResource("AnimationLibrary_y7yu4")
 }
 autoplay = "idle"
+
+[connection signal="body_entered" from="." to="." method="_on_Hit"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
