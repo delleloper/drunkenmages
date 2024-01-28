@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Scenes/potions/ball.gd" id="1_t1ddj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uubp2"]
-friction = 0.5
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_080oj"]
@@ -49,6 +48,7 @@ _data = {
 }
 
 [node name="Fireball" type="RigidBody2D" groups=["bodies"]]
+collision_layer = 0
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_uubp2")
 can_sleep = false
