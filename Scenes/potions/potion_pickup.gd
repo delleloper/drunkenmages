@@ -23,7 +23,10 @@ func get_potion():
 		potionType.JUMPER:
 			return preload("res://Scenes/potions/jumper.tscn")
 
+func get_color():
+	return Color.YELLOW
+
 func _on_body_entered(body):
 	if body is Player:
-		body.pickPotion(get_potion())
+		body.pickPotion(get_potion(), get_color())
 		queue_free()

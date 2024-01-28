@@ -4,6 +4,7 @@ var throwing = true
 var throwDirection = Vector2.ZERO
 #TODO change current in player script
 @export var currentPotion : PackedScene
+var currentPotionColor : Color
 @export var throw_speed : int
 @onready var player : Player = owner  
 @onready var line_2d = $Line2D

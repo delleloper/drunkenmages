@@ -24,6 +24,7 @@ var current_friction : int
 @export var jump_velocity : float = 150.0
 var current_jump_velocity : float
 
+var flip = false
 var direction
 var throwing = false
 const LERP_MULTIPLIER = 0.01
@@ -40,6 +41,7 @@ const LERP_MULTIPLIER = 0.01
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite
 @onready var thrower = $Thrower
+@onready var potion_sprite : Sprite2D = $Potion_sprite
 
 signal dead
 
@@ -88,25 +90,51 @@ func handle_animations() -> void:
 			thrower.enabled = true			
 			if velocity.y > 3 && !is_on_floor():
 				animation_player.play("Fall")
+				side_potion()
 			if velocity.x != 0 && is_on_floor():
 				animation_player.play("Walk")
+				side_potion()
 			if velocity.y < 0:
 				animation_player.play("Jump")
+				side_potion()
 			if velocity == Vector2.ZERO:
 				animation_player.play("Idle")
+				hide_potion()
 			if Input.is_action_pressed(throw):
 				animation_player.play("Cast")
+				center_potion()
 		Altered_State.ROLLING:
 			animation_player.play("Roll")
+			hide_potion()
 			thrower.enabled = false
 		Altered_State.HIT:
 			animation_player.play("Hit")
+			hide_potion()
 	
 	if velocity.x < 0:
 		sprite.flip_h = true
 	if velocity.x > 0:
 		sprite.flip_h = false
 
+
+	
+func hide_potion():
+	potion_sprite.visible = false
+func side_potion():
+	if thrower.currentPotion:
+		potion_sprite.visible = true
+		potion_sprite.modulate = thrower.currentPotionColor
+		potion_sprite.position.x = 12 if sprite.flip_h else -12
+		potion_sprite.position.y = -15
+	else:
+		potion_sprite.visible = false
+func center_potion():
+	if thrower.currentPotion:
+		potion_sprite.visible = true
+		potion_sprite.modulate = thrower.currentPotionColor
+		potion_sprite.position.x = 0
+		potion_sprite.position.y = -25
+		
 func puddleJump(multiplier):
 	if velocity.y >= 0:
 		direction = Vector2.ZERO
@@ -115,9 +143,13 @@ func puddleJump(multiplier):
 		velocity.x = velocity.x * multiplier * (-1 if is_on_floor() else 1)
 		altered_state = Altered_State.ROLLING
 	
-func pickPotion(potion):
+func pickPotion(potion, color):
 	thrower.currentPotion = potion
+	thrower.currentPotionColor = color
 
 
 func _on_visible_on_screen_enabler_2d_screen_exited():
 	dead.emit()
+
+	
+
