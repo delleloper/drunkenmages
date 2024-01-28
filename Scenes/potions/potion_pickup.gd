@@ -30,13 +30,13 @@ func get_potion():
 func get_color():
 	match potionClass:
 		potionType.JUMPER:
-			return Color.YELLOW
+			return Color("b201ef")
 		potionType.SPLASHER:
-			return Color.NAVY_BLUE
+			return Color("5fcde4")
 		potionType.BALL:
-			return Color.RED
+			return Color("fa5a32")
 		potionType.TORNADO:
-			return Color.GREEN
+			return Color("99e550")
 
 
 func _on_body_entered(body):

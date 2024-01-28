@@ -5,7 +5,7 @@
 
 [node name="jumper" instance=ExtResource("1_huf5t")]
 script = ExtResource("2_sc1ev")
-color = Color(0.85098, 0.717647, 0, 1)
+color = Color(0.698039, 0.00392157, 0.937255, 1)
 
 [node name="CollisionShape2D" parent="." index="0"]
 visible = false
