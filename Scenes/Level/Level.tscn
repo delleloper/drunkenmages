@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://erf0kt12ms83"]
+[gd_scene load_steps=14 format=3 uid="uid://erf0kt12ms83"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_keilr"]
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_kyr7t"]
 [ext_resource type="Texture2D" uid="uid://c8s6hl0rrjdgk" path="res://Assets/Platforms/Background.png" id="2_wuval"]
 [ext_resource type="PackedScene" uid="uid://by33i7fusbxyy" path="res://Scenes/Level/Platforms/Platform_one_way.tscn" id="3_egqg0"]
-[ext_resource type="PackedScene" uid="uid://bs7sgj8ay07of" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
+[ext_resource type="PackedScene" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
 [ext_resource type="Texture2D" uid="uid://ck61g83soe5y4" path="res://Assets/Platforms/Solid_platform.png" id="5_f0wwk"]
 [ext_resource type="PackedScene" uid="uid://0u6n7bg5bfgh" path="res://Scenes/potions/potion_pickup.tscn" id="6_8y87c"]
+[ext_resource type="Script" path="res://Scenes/Level/Camera2D.gd" id="6_msht2"]
 [ext_resource type="Texture2D" uid="uid://cvsxe86j7s286" path="res://Assets/Potion/Trophy.png" id="8_nwovt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3v623"]
@@ -59,6 +60,7 @@ size = Vector2(450, 23)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_keilr")
+player2Color = Color(0.901961, 1, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(241, -1438)
@@ -525,6 +527,7 @@ limit_left = 0
 limit_right = 480
 limit_bottom = 362
 editor_draw_limits = true
+script = ExtResource("6_msht2")
 
 [node name="Area2D" type="Area2D" parent="Camera2D"]
 position = Vector2(0, -169)
