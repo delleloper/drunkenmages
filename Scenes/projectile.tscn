@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://b0yquoyt48r7"]
 
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_8n5o6"]
-[ext_resource type="Texture2D" uid="uid://dnlcrdp3sqtb5" path="res://Assets/potions/PotaAzul.png" id="2_fbh73"]
+[ext_resource type="Texture2D" uid="uid://cirkmmdqkvl1s" path="res://Assets/Potion/Potion.png" id="3_6a2lp"]
 [ext_resource type="Texture2D" uid="uid://b77twucxhkcsq" path="res://Assets/potions/Particula1.png" id="3_r0xhs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxowr"]
@@ -86,7 +86,7 @@ process_material = SubResource("ParticleProcessMaterial_l0ffy")
 texture = ExtResource("3_r0xhs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_fbh73")
+texture = ExtResource("3_6a2lp")
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

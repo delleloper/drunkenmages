@@ -20,10 +20,13 @@ func _ready():
 	players[1].set_color(player2Color)
 	for each in players:
 		each.dead.connect(game_over)
+		each.shake.connect(cameraShake)
 
 func game_over():
 	reset_timer.start(3)
 
+func cameraShake():
+	camera_2d.applyShake()
 
 func _on_reset_timer_timeout():
 	get_tree().reload_current_scene()

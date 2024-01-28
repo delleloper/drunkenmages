@@ -33,5 +33,6 @@ func _on_body_entered(body):
 	if !body is Potion:
 		if(!exploded):
 			exploded = true
+			get_parent().cameraShake()
 			explode()
 		return

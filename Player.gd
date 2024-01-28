@@ -50,6 +50,8 @@ var currentPotion : PackedScene
 var currentPotionColor : Color
 
 signal dead
+signal shake
+
 
 func _ready():
 	current_acceleration = acceleration
@@ -157,6 +159,7 @@ func center_potion():
 		
 func puddleJump(multiplier):
 	if velocity.y >= 0:
+		shake.emit()
 		direction = Vector2.ZERO
 		current_friction = current_friction * 0.3
 		velocity.y = clamp(velocity.y * -1 * multiplier, -500, 500)
@@ -196,6 +199,7 @@ func exitTornado(position):
 	altered_state = Altered_State.ROLLING
 	velocity = Vector2(randf_range(-2,2) * 300, -500)
 	current_friction += .5
+	shake.emit()
 	
 func _on_area_2d_body_entered(body):
 	if body is Player && altered_state != Altered_State.NONE:
@@ -207,6 +211,7 @@ func _on_area_2d_2_body_entered_2(body):
 
 
 func player_bounce(dir):
+	shake.emit()	
 	velocity.x = 100 * dir
 	current_friction += 3
 
@@ -220,6 +225,8 @@ func _on_area_2d_body_entered_projectiles(body):
 			velocity.x = 300
 			body.apply_impulse(Vector2(-150,0))
 		altered_state = Altered_State.HIT
+		shake.emit()
+		
 
 func set_color(color : Color):
 	sprite.modulate = color
