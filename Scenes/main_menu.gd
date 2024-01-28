@@ -1,6 +1,6 @@
 extends Control
 
-var count = 3
+var count = 2
 var readyForinput = false
 @onready var animation_player = $AnimationPlayer
 
