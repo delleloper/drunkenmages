@@ -53,3 +53,4 @@ func _on_tornado_exit_timeout():
 	is_player_affected = false
 	player_affected = null
 	tornado_victim.visible = false
+	queue_free()

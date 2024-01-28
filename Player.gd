@@ -48,6 +48,7 @@ const LERP_MULTIPLIER = 0.01
 
 var currentPotion : PackedScene
 var currentPotionColor : Color
+var onCooldown = false
 
 signal dead
 signal shake
@@ -230,3 +231,4 @@ func _on_area_2d_body_entered_projectiles(body):
 
 func set_color(color : Color):
 	sprite.modulate = color
+
