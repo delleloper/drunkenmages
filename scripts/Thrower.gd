@@ -33,9 +33,7 @@ func throwProjectile():
 	get_tree().current_scene.add_child(throwable)
 	player.currentPotion = null
 	line_2d.clear_points()
-	throwSounds.shuffle()
-	$throw.stream = throwSounds[0]
-	$throw.play()
+	Globals.playRandomSound($throw,throwSounds)
 	
 	throwable.tree_exited.connect(func(): breakSound.play())
 	

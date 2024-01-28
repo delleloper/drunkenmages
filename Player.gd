@@ -241,9 +241,8 @@ func _on_area_2d_body_entered_projectiles(body):
 func set_color(color : Color):
 	sprite.modulate = color
 
-func playHitSound(array):
-	array.shuffle()
-	$playerHit.stream = array()
+
+	
 	
 func _on_collider_timer_timeout():
 	collision_shape_2d.disabled = false
