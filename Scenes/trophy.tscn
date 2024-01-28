@@ -1,0 +1,224 @@
+[gd_scene load_steps=15 format=3 uid="uid://c68gq0efi0b5j"]
+
+[ext_resource type="Script" path="res://Scenes/trophy.gd" id="1_5cjd2"]
+[ext_resource type="Texture2D" uid="uid://cbf2lfsvo2eac" path="res://Assets/Trophy.png" id="1_ji4md"]
+[ext_resource type="Texture2D" uid="uid://bwi7xnnbcjtkg" path="res://Assets/potions/Particula2.png" id="2_1gvrp"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dviw8"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_svod0"]
+offsets = PackedFloat32Array(0.0392157, 0.333333, 0.730392, 1)
+colors = PackedColorArray(0.6, 0.898039, 0.313726, 1, 0.372549, 0.803922, 0.894118, 1, 0.698039, 0.00392157, 0.937255, 1, 0.980392, 0.352941, 0.196078, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_opma6"]
+gradient = SubResource("Gradient_svod0")
+
+[sub_resource type="Curve" id="Curve_45v1x"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.805348), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m5npq"]
+curve = SubResource("Curve_45v1x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3dil8"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 27.92
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 1.0
+linear_accel_max = 14.36
+scale_min = 1.5
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_m5npq")
+color_ramp = SubResource("GradientTexture1D_opma6")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmnox"]
+size = Vector2(26, 69)
+
+[sub_resource type="Animation" id="Animation_yklgy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trophy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("winParticles:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("winParticles:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1amdy"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trophy:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("winParticles:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mq0ii"]
+resource_name = "win"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("winParticles:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("winParticles:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n7nae"]
+_data = {
+"RESET": SubResource("Animation_yklgy"),
+"idle": SubResource("Animation_1amdy"),
+"win": SubResource("Animation_mq0ii")
+}
+
+[node name="Trophy" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_5cjd2")
+
+[node name="Trophy" type="Sprite2D" parent="."]
+texture = ExtResource("1_ji4md")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Trophy"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_dviw8")
+position = Vector2(1, 2.04775)
+amount = 9
+process_material = SubResource("ParticleProcessMaterial_3dil8")
+texture = ExtResource("2_1gvrp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_vmnox")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n7nae")
+}
+autoplay = "idle"
+
+[node name="winParticles" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="winParticles"]
+material = SubResource("CanvasItemMaterial_dviw8")
+position = Vector2(-43, 13)
+amount = 9
+process_material = SubResource("ParticleProcessMaterial_3dil8")
+texture = ExtResource("2_1gvrp")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="winParticles"]
+material = SubResource("CanvasItemMaterial_dviw8")
+position = Vector2(51, 14)
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_3dil8")
+texture = ExtResource("2_1gvrp")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="winParticles"]
+material = SubResource("CanvasItemMaterial_dviw8")
+position = Vector2(32, -17)
+amount = 9
+process_material = SubResource("ParticleProcessMaterial_3dil8")
+texture = ExtResource("2_1gvrp")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="winParticles"]
+material = SubResource("CanvasItemMaterial_dviw8")
+position = Vector2(-35, -46)
+amount = 9
+process_material = SubResource("ParticleProcessMaterial_3dil8")
+texture = ExtResource("2_1gvrp")
+
+[node name="GPUParticles2D6" type="GPUParticles2D" parent="winParticles"]
+material = SubResource("CanvasItemMaterial_dviw8")
+position = Vector2(-35, -46)
+amount = 9
+process_material = SubResource("ParticleProcessMaterial_3dil8")
+texture = ExtResource("2_1gvrp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

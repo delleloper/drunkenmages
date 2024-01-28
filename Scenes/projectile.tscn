@@ -17,7 +17,7 @@ particles_anim_loop = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.805348), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_m5npq"]
+[sub_resource type="CurveTexture" id="CurveTexture_a8kln"]
 curve = SubResource("Curve_5w6mn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l0ffy"]
@@ -29,7 +29,7 @@ linear_accel_min = 1.0
 linear_accel_max = 14.36
 scale_min = 1.5
 scale_max = 2.5
-scale_curve = SubResource("CurveTexture_m5npq")
+scale_curve = SubResource("CurveTexture_a8kln")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
