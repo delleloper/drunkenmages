@@ -2,7 +2,10 @@ extends RigidBody2D
 
 class_name Puddle
 @onready var animation_player = $AnimationPlayer
+@onready var create = $create
 
+func _ready():
+	create.play()
 func playerEnter(_player):
 	pass
 

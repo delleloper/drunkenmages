@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxgq6vthig567"]
+[gd_scene load_steps=10 format=3 uid="uid://dxgq6vthig567"]
 
 [ext_resource type="Script" path="res://Tornado.gd" id="1_gp2oq"]
 [ext_resource type="Texture2D" uid="uid://cwp7rc3jej5pq" path="res://Assets/potions/tornado/Tornado.png" id="2_b2ads"]
 [ext_resource type="Texture2D" uid="uid://dajwh8n0dkhdx" path="res://Assets/potions/tornado/TornadoVictim.png" id="3_xn3vt"]
+[ext_resource type="AudioStream" uid="uid://dys7uaxa7j4of" path="res://Assets/sfx/08_tornado.mp3" id="4_pqhvc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5l62l"]
 radius = 20.0
@@ -158,6 +159,11 @@ wait_time = 0.5
 autostart = true
 
 [node name="TornadoExit" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pqhvc")
+autoplay = true
+bus = &"sfx"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_body_entered"]

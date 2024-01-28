@@ -20,6 +20,7 @@ func _process(delta):
 	sprite_2d.rotation_degrees = sprite_2d.rotation_degrees+(delta*rotation_speed)
 
 func explode():
+	
 	remove_child(particles)
 	particles.global_position = global_position
 	get_parent().add_child(particles)
@@ -32,5 +33,6 @@ func _on_body_entered(body):
 	if !body is Potion:
 		if(!exploded):
 			exploded = true
+			get_parent().cameraShake()
 			explode()
 		return

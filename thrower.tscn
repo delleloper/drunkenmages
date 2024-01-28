@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2d1plg7s41l8"]
+[gd_scene load_steps=12 format=3 uid="uid://c2d1plg7s41l8"]
 
 [ext_resource type="Script" path="res://scripts/Thrower.gd" id="1_0uo6v"]
+[ext_resource type="AudioStream" uid="uid://dfewvghlj8au0" path="res://Assets/sfx/arrojar-version2-oscar.mp3" id="2_5ruje"]
 [ext_resource type="Texture2D" uid="uid://c6y7jkhsk1amp" path="res://Assets/Trajectory.png" id="2_bqkpf"]
 [ext_resource type="Script" path="res://Trajectory.gd" id="2_cvca4"]
+[ext_resource type="AudioStream" uid="uid://bp7xy6rn6nndf" path="res://Assets/sfx/arrojar-version-fran.mp3" id="3_vtagc"]
+[ext_resource type="AudioStream" uid="uid://eqfsly1gx1km" path="res://Assets/sfx/arrojar-version-oscar.mp3" id="4_1qc3s"]
 [ext_resource type="Shader" path="res://thrower.gdshader" id="4_2batu"]
+[ext_resource type="AudioStream" uid="uid://hy10akp0ck75" path="res://Assets/sfx/05_ruptura_de_botella.mp3" id="5_cwtnn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pkvm0"]
 shader = ExtResource("4_2batu")
@@ -19,6 +23,7 @@ radius = 3.0
 [node name="Thrower" type="Node2D"]
 script = ExtResource("1_0uo6v")
 throw_speed = 500
+throwSounds = Array[AudioStream]([ExtResource("2_5ruje"), ExtResource("3_vtagc"), ExtResource("4_1qc3s")])
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_filter = 1
@@ -38,3 +43,12 @@ collision_layer = 256
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/CharacterBody2D"]
 material = SubResource("ShaderMaterial_dhqfi")
 shape = SubResource("CircleShape2D_vxind")
+
+[node name="break" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cwtnn")
+volume_db = 23.005
+bus = &"sfx"
+
+[node name="throw" type="AudioStreamPlayer" parent="."]
+volume_db = 24.0
+bus = &"sfx"

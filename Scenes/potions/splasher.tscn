@@ -5,6 +5,7 @@
 
 [node name="splasher" instance=ExtResource("1_bq7yk")]
 script = ExtResource("2_8f74i")
+color = Color(0.372549, 0.803922, 0.894118, 1)
 
 [node name="Sprite2D" parent="." index="2"]
 modulate = Color(0.105882, 0.701961, 0.796078, 1)

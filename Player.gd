@@ -22,7 +22,7 @@ var current_speed : float
 @export_range(0.0, 10.0) var acceleration : int = 1
 var current_acceleration : int
 @export_range(0.0, 10.0) var friction : int = 1
-var current_friction : int
+var current_friction : float
 @export var jump_velocity : float = 150.0
 var current_jump_velocity : float
 
@@ -48,8 +48,11 @@ const LERP_MULTIPLIER = 0.01
 
 var currentPotion : PackedScene
 var currentPotionColor : Color
+var onCooldown = false
 
 signal dead
+signal shake
+
 
 func _ready():
 	current_acceleration = acceleration
@@ -70,7 +73,7 @@ func _physics_process(delta):
 	move_and_slide()
 	#var push = 100
 	#for index in get_slide_collision_count():
-		#var collision : KinematicCollision2D = get_slide_collision(index)
+		#var collision : KinematicCollisio2D = get_slide_collision(index)
 		#var col = collision.get_collider()
 		#if not col is TileMap:
 			#print(collision, col)
@@ -157,6 +160,7 @@ func center_potion():
 		
 func puddleJump(multiplier):
 	if velocity.y >= 0:
+		shake.emit()
 		direction = Vector2.ZERO
 		current_friction = current_friction * 0.3
 		velocity.y = clamp(velocity.y * -1 * multiplier, -500, 500)
@@ -175,6 +179,7 @@ func puddleSlide(multiplier):
 			velocity.x = 500 * (-1 if position.x < 240 else 1)
 				
 func pickPotion(potion, color):
+	$grabpotion.play()
 	currentPotion = potion
 	currentPotionColor = color
 
@@ -195,6 +200,7 @@ func exitTornado(position):
 	altered_state = Altered_State.ROLLING
 	velocity = Vector2(randf_range(-2,2) * 300, -500)
 	current_friction += .5
+	shake.emit()
 	
 func _on_area_2d_body_entered(body):
 	if body is Player && altered_state != Altered_State.NONE:
@@ -206,6 +212,7 @@ func _on_area_2d_2_body_entered_2(body):
 
 
 func player_bounce(dir):
+	shake.emit()	
 	velocity.x = 100 * dir
 	current_friction += 3
 
@@ -219,4 +226,9 @@ func _on_area_2d_body_entered_projectiles(body):
 			velocity.x = 300
 			body.apply_impulse(Vector2(-150,0))
 		altered_state = Altered_State.HIT
+		shake.emit()
+		
+
+func set_color(color : Color):
+	sprite.modulate = color
 

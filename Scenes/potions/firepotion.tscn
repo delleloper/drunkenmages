@@ -5,4 +5,4 @@
 
 [node name="Potion" instance=ExtResource("1_cvkj0")]
 script = ExtResource("2_jl25c")
-color = Color(1, 0, 0, 1)
+color = Color(0.980392, 0.352941, 0.196078, 1)
