@@ -191,6 +191,7 @@ func enterTornado():
 	#visible
 	#motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	visible = false
+	thrower.enabled = false
 	altered_state = Altered_State.SPINNING
 
 func exitTornado(position):
@@ -201,6 +202,8 @@ func exitTornado(position):
 	velocity = Vector2(randf_range(-2,2) * 300, -500)
 	current_friction += .5
 	shake.emit()
+	thrower.enabled = true
+	
 	
 func _on_area_2d_body_entered(body):
 	if body is Player && altered_state != Altered_State.NONE:
@@ -232,3 +235,6 @@ func _on_area_2d_body_entered_projectiles(body):
 func set_color(color : Color):
 	sprite.modulate = color
 
+#func playHitSound(array):
+	#array.shuffle()
+	#$playerHit.stream = array()
