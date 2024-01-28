@@ -154,7 +154,7 @@ potionClass = 3
 
 [node name="PotionPickup5" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(176, 322)
-potionClass = 1
+potionClass = 2
 
 [node name="PotionPickup6" parent="." instance=ExtResource("6_8y87c")]
 position = Vector2(165, 183)
