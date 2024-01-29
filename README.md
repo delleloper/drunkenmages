@@ -7,9 +7,13 @@ WARNING: This game is sort of flashy and contains many colours. Might trigger se
 Controls:
 
 Trippin'Potionz is designed to be played with and/or against a friend.
+
 Both players share the same controller.
+
 Player 1 Moves with L Joystick, and uses LB and LT to aim and jump, respectively.
+
 Player 1 Moves with R Joystick, and uses RB and RT to aim and jump, respectively.
+
 
 Made during Global Game Jam 2024
 Theme: Make me laugh!
