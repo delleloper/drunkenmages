@@ -1,4 +1,5 @@
 TRIPPIN' POTIONZ!
+
 Climb the Magical Tower in search for the Victory Spirit! Throw Potionz at your frienemy.
 
 WARNING: This game is sort of flashy and contains many colours. Might trigger seizures in people with photosensitive epilepsy. Player's dicretion is advised.
