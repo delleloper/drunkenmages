@@ -18,9 +18,13 @@ Made with Godot 4.2.1
 Credits
 
 Francisco Delledonne - Programming & UI
+
 Oscar Schwerdt - Programming & Level design
+
 Diego Sería - Music & sound effects
+
 Facundo Ferrara - Game design , UI & Art
+
 
 ![image](https://github.com/delleloper/drunkenmages/assets/17836214/fd972d8f-c392-4bf6-99bf-619afc52b8fc)
 ![image](https://github.com/delleloper/drunkenmages/assets/17836214/704181dd-f67e-4e7c-8dbf-981e4bb270a4)
