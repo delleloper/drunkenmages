@@ -248,15 +248,23 @@ func player_bounce(dir):
 
 func _on_area_2d_body_entered_projectiles(body):
 	if body is RigidBody2D:
-		if body.position.x > position.x:
-			velocity.x = -300
-			body.apply_impulse(Vector2(150,0))
-		else:
-			velocity.x = 300
-			body.apply_impulse(Vector2(-150,0))
-		altered_state = Altered_State.HIT
-		Globals.playRandomSound($playerHit, ballHitSounds)
-		shake.emit()
+		playerHit(body)
+
+func playerHit( throwable: RigidBody2D):
+	if throwable is Potion:
+		if throwable.player.number == number:
+			return
+	
+	if throwable.position.x > position.x:
+		velocity.x = -300
+		throwable.apply_impulse(Vector2(150,0))
+	else:
+		velocity.x = 300
+		throwable.apply_impulse(Vector2(-150,0))
+	altered_state = Altered_State.HIT
+	Globals.playRandomSound($playerHit, ballHitSounds)
+	shake.emit()
+
 
 func set_color(color : Color):
 	sprite.modulate = color

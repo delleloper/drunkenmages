@@ -1,11 +1,10 @@
 extends Area2D
-@onready var animation_player = $AnimationPlayer
+var picked = false
 
 func _on_body_entered(body):
-	owner.victory(body.number)
-	body.altered_state = body.Altered_State.WIN
-	visible = false
-	owner.cameraShake()
-
-func change():
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	if !picked:
+		picked = true
+		owner.victory(body.number)
+		body.altered_state = body.Altered_State.WIN
+		visible = false
+		owner.cameraShake()

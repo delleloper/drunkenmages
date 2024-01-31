@@ -8,6 +8,7 @@ var rotation_speed = 360
 @onready var particles = $GPUParticles2D
 @export var color : Color
 var exploded = false
+var player
 
 func _ready():
 	sprite_2d.modulate = color

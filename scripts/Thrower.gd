@@ -30,6 +30,7 @@ func throwProjectile():
 	throwable.apply_central_impulse(throwDirection * throw_speed)
 	throwable.global_position = global_position
 	throwable.direction = throwDirection 
+	throwable.player = player
 	get_tree().current_scene.add_child(throwable)
 	player.currentPotion = null
 	line_2d.clear_points()

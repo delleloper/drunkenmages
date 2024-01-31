@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4ha5g10lip15"]
+[gd_scene load_steps=12 format=3 uid="uid://b4ha5g10lip15"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_fja48"]
 [ext_resource type="Texture2D" uid="uid://bepstqgc5753p" path="res://Assets/menus/Disclaimer.png" id="2_ujifn"]
@@ -59,7 +59,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath("VideoStreamPlayer:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -69,11 +69,24 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_c8e85"]
 resource_name = "idle"
-length = 30.0
+length = 200.0
 loop_mode = 2
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -81,22 +94,10 @@ tracks/0/path = NodePath("Background:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 30),
+"times": PackedFloat32Array(0, 200),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -3239), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("SplashTitle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(4.3, 10.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(240, 215), Vector2(240, 200)]
 }
 
 [sub_resource type="Animation" id="Animation_n5ewa"]
@@ -162,6 +163,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gc47u"]
 _data = {
@@ -169,6 +182,9 @@ _data = {
 "idle": SubResource("Animation_c8e85"),
 "init": SubResource("Animation_n5ewa")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_x82sp"]
+font_size = 10
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -205,6 +221,7 @@ libraries = {
 "": SubResource("AnimationLibrary_gc47u")
 }
 autoplay = "init"
+next/RESET = &"idle"
 next/init = &"idle"
 
 [node name="SplashTitle" type="Sprite2D" parent="."]
@@ -220,4 +237,15 @@ texture = ExtResource("5_4ftjo")
 stream = ExtResource("6_uv60e")
 bus = &"music"
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 343.0
+offset_right = 92.0
+offset_bottom = 366.0
+text = "Press H For credits
+"
+label_settings = SubResource("LabelSettings_x82sp")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

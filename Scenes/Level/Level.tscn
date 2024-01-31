@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckxdmagp50i5r" path="res://Scenes/player/player.tscn" id="1_kyr7t"]
 [ext_resource type="Texture2D" uid="uid://c8s6hl0rrjdgk" path="res://Assets/Platforms/Background.png" id="2_wuval"]
 [ext_resource type="PackedScene" uid="uid://by33i7fusbxyy" path="res://Scenes/Level/Platforms/Platform_one_way.tscn" id="3_egqg0"]
-[ext_resource type="PackedScene" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
+[ext_resource type="PackedScene" uid="uid://bs7sgj8ay07of" path="res://Scenes/Level/Platforms/Solid_platform.tscn" id="4_pcemg"]
 [ext_resource type="Texture2D" uid="uid://ck61g83soe5y4" path="res://Assets/Platforms/Solid_platform.png" id="5_f0wwk"]
 [ext_resource type="PackedScene" uid="uid://0u6n7bg5bfgh" path="res://Scenes/potions/potion_pickup.tscn" id="6_8y87c"]
 [ext_resource type="Script" path="res://Scenes/Level/Camera2D.gd" id="6_msht2"]
@@ -81,7 +81,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_vsjom"]
 resource_name = "victory"
-length = 2.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,7 +101,7 @@ tracks/1/path = NodePath("../..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.6),
+"times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -831,7 +831,7 @@ potionClass = 1
 position = Vector2(240, -3102)
 
 [node name="Trophy2" parent="." instance=ExtResource("10_3rhkn")]
-position = Vector2(-49, 178)
+position = Vector2(-178, 254)
 
 [node name="Player" parent="." instance=ExtResource("1_kyr7t")]
 position = Vector2(57, 328)
