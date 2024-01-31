@@ -853,6 +853,9 @@ jump = "jump2"
 throw = "throw2"
 number = 2
 
+[node name="Sprite" parent="Player2" index="2"]
+flip_h = true
+
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -903,3 +906,5 @@ libraries = {
 [connection signal="body_entered" from="TileMap/Area2D2" to="Player" method="_on_area_2d_2_body_entered_2"]
 [connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
+
+[editable path="Player2"]
