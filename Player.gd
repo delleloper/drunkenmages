@@ -48,7 +48,7 @@ const LERP_MULTIPLIER = 0.01
 @export var playerSpinSounds : Array[AudioStream]
 @export var playerMineSounds : Array[AudioStream]
 @export var playerFallSounds : Array[AudioStream]
-
+@onready var OutOfScreen = $collider_timer
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite
 @onready var thrower = $Thrower
@@ -60,10 +60,13 @@ const LERP_MULTIPLIER = 0.01
 var currentPotion : PackedScene
 var currentPotionColor : Color
 var onCooldown = false
+var aboutToDie = false
 
 signal dead(number)
 signal shake
 
+
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	current_acceleration = acceleration
@@ -73,10 +76,14 @@ func _ready():
 	drunken_status = Drunken_Status.SOBER
 	altered_state = Altered_State.NONE
 	animation_player.play("Idle")
-	
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+	OutOfScreen.timeout.connect(_on_out_of_screen_timeout)
 
-func _physics_process(delta):	
+func _physics_process(delta):
+	#if aboutToDie:
+		#print("aboutToDie " + str(number))
+	if(OutOfScreen.time_left != 0):
+		print("t " + str(OutOfScreen.time_left))
+	
 	if altered_state == Altered_State.NONE:
 		handle_inputs()
 	handle_movement(delta)
@@ -208,10 +215,6 @@ func pickPotion(potion, color):
 	currentPotion = potion
 	currentPotionColor = color
 
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	if visible:
-		dead.emit(number)
-
 func enterTornado():
 	#visible
 	#motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -264,10 +267,29 @@ func playerHit( throwable: RigidBody2D):
 	altered_state = Altered_State.HIT
 	Globals.playRandomSound($playerHit, ballHitSounds)
 	shake.emit()
-
+	
 
 func set_color(color : Color):
 	sprite.modulate = color
 
 func _on_collider_timer_timeout():
 	collision_shape_2d.disabled = false
+
+func _on_out_of_screen_timeout():
+	print("TIMEEEEEEEEE")
+	if aboutToDie:
+		print("DEAAAAAAAAAAAAD")
+		dead.emit(number)
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	if aboutToDie:
+		print("STOP")
+		OutOfScreen.stop()
+		aboutToDie = false
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	if visible:
+		OutOfScreen.start(2)
+		OutOfScreen.one_shot = true
+		aboutToDie = true
+
